@@ -6,8 +6,8 @@ import {ILoginDto} from "@/services/AuthService/dtos/ILoginDto";
 import {apiPathsEnum} from "@/config/paths/ApiPathsEnum";
 import errorCodesEnumObject from "@/config/dictionaries/errorCodesEnumObject";
 import {UserService} from "@/services/UserService/UserService";
-import { IRegisterDto } from "./dtos/IRegisterDto";
-/* eslint-disable  @typescript-eslint/no-explicit-any */
+
+
 export class AuthService extends Service {
     private dataValidator:AuthDataValidator;
     private userService:UserService;
@@ -25,7 +25,7 @@ export class AuthService extends Service {
             return {message:errorCodesEnumObject[13], status:'', type:'error'};
         }
 
-        const response: AxiosResponse<any> = await this.axiosInstance.post(apiPathsEnum.API_LOGIN, loginData,{headers});
+        const response: AxiosResponse<any> = await this.axiosInstance.post(apiPathsEnum.API_LOGIN,loginData,{headers});
 
         if(!this.dataValidator.wasLoginSuccessful(response)){
             return null;
@@ -39,25 +39,6 @@ export class AuthService extends Service {
          *  do weryfikacji middleware */
         response.data && response.data.token ? localStorage.setItem("token", response.data.verificationToken) : null;
         this.userService.setUserData(response.data);
-        return response.data;
-    }
-    public async register(registrationData:IRegisterDto,headers:any): Promise<any>{
-
-        if(!this.dataValidator.validateRegistation(registrationData)) {
-            console.error('invalid registration records')
-            return {message:errorCodesEnumObject[998], status:'', type:'error'};
-        }
-
-        const response: AxiosResponse<any> = await this.axiosInstance.post(apiPathsEnum.API_REGISTER, registrationData,{headers});
-    
-       
-        return response.data;
-    }
-    public async verify(token: string): Promise<any>{
-
-        const response: AxiosResponse<any> = await this.axiosInstance.get(apiPathsEnum.API_VERIFIY_USER + token);
-        
-       
         return response.data;
     }
 

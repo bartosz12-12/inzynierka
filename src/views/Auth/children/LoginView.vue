@@ -20,6 +20,7 @@
 <script>
 import {AuthService} from "@/services/AuthService/AuthService";
 import provideUser from '../../../main';
+import axios from 'axios'; // Importowanie Axios
 
 export default {
     name: "LoginView",
@@ -35,16 +36,29 @@ export default {
     } ,
     methods:{
       async login(){
-        console.log("to jest", this.password,this.email)
-        const loginResult = await this.authService.login({email:this.email, password:this.password}, {});
+        console.log("to jest",this.password,this.email)
+        const loginResult = await this.authService.login({email:this.email, password:this.password});
         console.log("rezultat",loginResult)
         if(loginResult && loginResult.message){
             console.log("potwierdzam")
         }
-        /** message znajduje sie w loginResult tylko podczas alertError/bledu w obsludze requesty
-           backend zwraca messages, wiec w taki sposob walidujemy blad i wyswietlamy go na ekranie **/
-        
-        /** logowanie się udało, więc kierujemy się na dashboard **/
+
+
+        //testy łopatologiczne 
+    //     const loginData = {
+    //   email: "queen56@ethereal.email",
+    //   password: "c3n3p8AteP4m22GMmR"
+    // };
+    // const headers = {
+    //   // Tutaj możesz dodać nagłówki, jeśli są potrzebne
+    // };
+    //     axios.post("http://localhost:7057/api/Auth/Login", loginData, { headers })
+    //   .then((response) => {
+    //     // Obsługa sukcesu - dostęp do odpowiedzi serwera
+    //     console.log("Odpowiedź serwera:", response.data);
+    //   })
+
+
         this.$router.push({ name: 'Dashboard' });
       },
     },
