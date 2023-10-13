@@ -1,6 +1,6 @@
 import {RouteRecordRaw} from "vue-router";
 import tokenVerificationMiddleware from "@/core/guards/tokenVerificationMiddleware";
-import AboutView from "@/views/AboutView.vue"
+import WarehouseView from "@/views/dashboard/children/Warehouse/WarehouseView.vue"
 import DashboardView from "@/views/dashboard/DashboardView.vue"
 import LinkView from "@/views/dashboard/children/LinkView.vue"
 const DashboardRoutes: Array<RouteRecordRaw> = [
@@ -9,12 +9,12 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
         name: 'Dashboard',
         component: DashboardView,
         beforeEnter: tokenVerificationMiddleware,
-        redirect:{name:'Intersection'},
+        redirect:{name:'Warehouse'},
         children: [
             {
-                path:'intersection',
-                name:'Intersection',
-                component:AboutView
+                path:'warehouse',
+                name:'Warehouse',
+                component:WarehouseView
             },
             {
                 path:'link',

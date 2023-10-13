@@ -5,4 +5,7 @@ export enum apiPathsEnum{
     API_LOGIN = "api/Auth/Login",
     API_REGISTER = "api/Auth/Register",
     API_VERIFIY_USER = "api/Auth/Verify/",
+
+    // Warehouse
+    API_GET_ALL_WAREHOUSE = "/api/Warehouse/GetAll",
 }

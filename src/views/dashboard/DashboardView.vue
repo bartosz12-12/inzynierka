@@ -20,8 +20,8 @@ export default {
     return{
         linx: [
         {
-          name: "Link1",
-          view:"Intersection"
+          name: "Warehouse",
+          view:"Warehouse"
         },
         {
           name: "Link2",

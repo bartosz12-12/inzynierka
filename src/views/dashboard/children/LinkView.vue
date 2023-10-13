@@ -1,6 +1,6 @@
 <template>
 <div class="link">
-    <h1>link2</h1>
+    <h1>Link2</h1>
 </div>
 </template>
 
