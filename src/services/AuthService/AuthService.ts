@@ -1,6 +1,6 @@
 import {Service} from "@/services/Service";
 import {AxiosResponse} from "axios";
-// import {IRegisterDto} from "@/services/AuthService/dtos/IRegisterDto";
+import {IRegisterDto} from "@/services/AuthService/dtos/IRegisterDto";
 import {AuthDataValidator} from "@/services/AuthService/helpers/AuthDataValidator";
 import {ILoginDto} from "@/services/AuthService/dtos/ILoginDto";
 import {apiPathsEnum} from "@/config/paths/ApiPathsEnum";
@@ -39,6 +39,19 @@ export class AuthService extends Service {
          *  do weryfikacji middleware */
         response.data && response.data.token ? localStorage.setItem("token", response.data.verificationToken) : null;
         this.userService.setUserData(response.data);
+        return response.data;
+    }
+
+    public async register(registrationData:IRegisterDto,headers:any): Promise<any>{
+
+        if(!this.dataValidator.validateRegistation(registrationData)) {
+            console.error('invalid registration records')
+            return {message:errorCodesEnumObject[998], status:'', type:'error'};
+        }
+
+        const response: AxiosResponse<any> = await this.axiosInstance.post(apiPathsEnum.API_REGISTER, registrationData,{headers});
+    
+       
         return response.data;
     }
 

@@ -1,10 +1,13 @@
 <template>
+  <div class="body">
   <div class="login_box">
-    <h1>Zaloguj się</h1>
+    <h1 class="h1">Zaloguj się</h1>
+    <p class="pp">Podaj Email</p>
     <div class="form_input_contrainer">
       <input class="dane" type="email" name="email" v-model="email" />
       <label v-if="!email" for="email">Login</label>
     </div>
+    <p class="pp">Podaj Hasło</p>
     <div class="form_input_contrainer">
       <input class="dane" type="password" name="password"  v-model="password"/>
       <label  v-if="!password" for="password">Hasło</label>
@@ -13,14 +16,21 @@
       <p id="zap">Zapamiętaj mnie</p>
       <input type="checkbox">
   </div>
-    <button @click="login()">Zatwierdz</button>
+  <div class="container-button">
+    <button class="button" @click="
+    $router.replace({
+      name: 'Register',
+    })
+  ">Rejestracja</button>
+  <button class="button" @click="login()">Zatwierdz</button>
   </div>
+  </div>
+</div>
 </template>
   
 <script>
 import {AuthService} from "@/services/AuthService/AuthService";
-import provideUser from '../../../main';
-import axios from 'axios'; // Importowanie Axios
+
 
 export default {
     name: "LoginView",
@@ -29,9 +39,6 @@ export default {
         email:"",
         password:"",
         authService: new AuthService(),
-        isShaking:false,
-        isPasswordClicked:false,
-        isEmailClicked:false,
       }
     } ,
     methods:{
@@ -69,12 +76,16 @@ export default {
 
 
 <style lang="scss">
+.container-button{
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
 .dane {
   border: solid black 1px;
   border-radius: 20px;
   height: 30px;
   width: 280px;
-  margin-top: 30px;
   padding-left: 5px;
 }
 
@@ -89,7 +100,7 @@ label {
   transition: left 0.5s, opacity 0.3s;
 }
 
-html {
+.body {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -97,7 +108,6 @@ html {
   align-items: center;
   background-size: cover;
   background-position: center;
-  background-image: url("../../../assets/tlo.jpg");
 }
 
 .login_box {
@@ -110,13 +120,9 @@ html {
   justify-items: center;
 }
 
-h1 {
-  font-size: 30px;
-  color: rgba($color: black, $alpha: 1);
-}
 
-button {
-  margin-top: 20px;
+
+.button {
   border-radius: 30px;
   background-color: rgba($color: #000000, $alpha: 0.9);
   padding: 5px 10px;
@@ -138,12 +144,12 @@ input:focus + label {
   margin-top: 20px;
 }
 
-button:hover {
+.button:hover {
   background-color: white;
   color: black;
 }
 
-button:active {
+.button:active {
   position: relative;
   top: 1px;
 }
@@ -154,6 +160,12 @@ button:active {
 }
 .checkbox-container{
  display: flex;
+ margin-top: 20px;
+}
+.pp{
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 20px;
 }
 </style>
 

@@ -9,7 +9,6 @@ const tokenVerificationMiddleware = (to: any, from: any, next: NavigationGuardNe
                 if (response.ok) {
                     next();
                 } else {
-                    console.log('middleware', response);
                     localStorage.removeItem('token');
                     next({ name: 'Login' });
                 }

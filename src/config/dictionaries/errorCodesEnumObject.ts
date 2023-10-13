@@ -17,6 +17,9 @@ interface ErrorCodeEnum {
     12: "Password changed successfully.",
     13: "User not found.",
     14: "Invalid token.",
+
+    998: "Registration data validation error",
+    999: "Undefined alertError",
   };
   export default errorCodesEnumObject;
   

@@ -1,14 +1,10 @@
 import {ILoginDto} from "@/services/AuthService/dtos/ILoginDto";
-// import {LocalStorageManager} from "@/core/localStorage/LocalStorageManager";
+import { IRegisterDto } from "../dtos/IRegisterDto";
 import {AxiosResponse} from "axios";
 import ITokenResponseDto from "@/services/AuthService/dtos/ITokenResponseDto";
 import validator from 'validator';
 
 export class AuthDataValidator {
-   // protected localStorageManager: LocalStorageManager;
-    public constructor() {
-        // this.localStorageManager = new LocalStorageManager();
-    }
     public beforeLoginValidate(loginData:ILoginDto):boolean {
         const isInstanceOfILoginDto = (object: any) : object is ILoginDto  => { return 'email' in object && 'password' in object; }
         if(!isInstanceOfILoginDto(loginData)){ return false; }
@@ -32,5 +28,32 @@ export class AuthDataValidator {
         }
         return true;
     }
+    public validateRegistation(registrationData: IRegisterDto): boolean {
+        const isInstanceOfIRegisterDto = (object: any): object is IRegisterDto => {
+          return (
+            "name" in object &&
+            "surname" in object &&
+            "language" in object &&
+            "confirmPassword" in object &&
+            "email" in object &&
+            "password" in object
+          );
+        };
+    
+        if (!isInstanceOfIRegisterDto(registrationData)) {
+          return false;
+        }
+        if (!validator.isEmail(registrationData.email)) {
+            console.error("Invalid email address");
+            return false;
+          }
+          if(!validator.equals(registrationData.password, registrationData.confirmPassword)){
+            console.error("Password and confirm password fields are different");
+            return false;
+          }
+    
+    
+          return true;
+      }
 
 }
