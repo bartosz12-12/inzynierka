@@ -39,6 +39,7 @@ export class AuthService extends Service {
          *  do weryfikacji middleware */
         response.data && response.data.token ? localStorage.setItem("token", response.data.verificationToken) : null;
         this.userService.setUserData(response.data);
+        console.log("to jest token:",localStorage.getItem('token'));
         return response.data;
     }
 

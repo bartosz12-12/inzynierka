@@ -3,6 +3,7 @@ import tokenVerificationMiddleware from "@/core/guards/tokenVerificationMiddlewa
 import WarehouseView from "@/views/dashboard/children/Warehouse/WarehouseView.vue"
 import DashboardView from "@/views/dashboard/DashboardView.vue"
 import LinkView from "@/views/dashboard/children/LinkView.vue"
+import NotificationView from "@/views/dashboard/children/Notification/NotificationView.vue"
 const DashboardRoutes: Array<RouteRecordRaw> = [
     {
         path: '/dashboard',
@@ -17,9 +18,9 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
                 component:WarehouseView
             },
             {
-                path:'link',
-                name:'Link1',
-                component:LinkView
+                path:'notification',
+                name:'Notification',
+                component:NotificationView
             }
         ]
     }

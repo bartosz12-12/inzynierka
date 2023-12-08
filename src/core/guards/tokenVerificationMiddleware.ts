@@ -3,9 +3,11 @@ import {apiPathsEnum} from "@/config/paths/ApiPathsEnum";
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 const tokenVerificationMiddleware = (to: any, from: any, next: NavigationGuardNext) => {
     const token = localStorage.getItem('token');
+    console.log(token)
     if (token) {
         fetch(`${apiPathsEnum.BASE_API_URL}api/Auth/Verify/${token}`)
             .then(response => {
+                console.log(response)
                 if (response.ok) {
                     next();
                 } else {

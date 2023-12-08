@@ -1,9 +1,9 @@
 <template>
   <div class="link">
-    <h1>Warehouse</h1>
+      <h1 class="title">Warehouse</h1>
     <ag-grid-vue
       class="ag-theme-alpine"
-      style="height: 500px; width: 85vw"
+      style="height: 500px; width: 82vw"
       :columnDefs="columnDefs"
       :rowData="rowData"
       :defaultColDef="defaultColDef"
@@ -46,4 +46,16 @@ export default {
 </script>
 
 <style>
+.grid{
+  background-color: #061A26;
+  color: aliceblue;
+}
+
+.link{
+  background-color: #061A26;
+  margin-top: 10px;
+  color: aliceblue;
+  padding: 10px;
+  border-radius: 20px;
+}
 </style>

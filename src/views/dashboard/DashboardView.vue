@@ -1,6 +1,8 @@
 <template>
   <div class="top-panel">
-    <h1 class="inzynier">Inżynierka</h1>
+    <h1 class="inzynier" @click=" $router.replace({
+      name: linx[0].view,
+    })">Inżynierka</h1>
     <button class="sign-out" @click="wyloguj">Wyloguj</button>
   </div>
   <div class="container-main">
@@ -24,8 +26,8 @@ export default {
           view:"Warehouse"
         },
         {
-          name: "Link2",
-          view:"Link1"
+          name: "Notification",
+          view:"Notification"
         },
     ]
     }
@@ -45,6 +47,7 @@ export default {
   display: flex;
   height: 40px;
   justify-content: end;
+  
 }
 .sign-out {
   background-color: #030526;
@@ -63,25 +66,35 @@ export default {
   margin-right: auto;
   margin-left: auto;
 }
+
+.inzynier:hover{
+  cursor: pointer;
+}
 .navbar {
   height: calc(100vh - 40px);
   width: 15vw;
-  background-color: #8B8C80;
-  position: fixed
+  background-color: #061A26;
+  position: fixed;
+  color: aliceblue;
 }
 .container-main{
     display: flex;
 }
 .link{
-    margin-left: 15vw;
+    margin-left: 16vw;
 }
 .panel{
-    height: 40px;
+    min-height: 40px;
     display: flex;
+    align-items: center;
+    padding: 5px;
     cursor: pointer;
 }
 .panel:hover{
     background-color:#6c6d63 ;
+}
+p{
+  margin: 0%;
 }
 </style>
   
