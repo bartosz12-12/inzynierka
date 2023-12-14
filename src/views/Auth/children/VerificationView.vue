@@ -22,16 +22,5 @@ export default {
 </script>
 
 <style>
-label{
-    top: 15%;
-}
-.dane{
-    margin: 0;
-}
-p{
-    font-size: larger;
-};
-.token{
-    margin-bottom: 40px;
-}
+
 </style>

@@ -9,21 +9,29 @@ export default {
 </script>
 
 <style lang="scss">
+.container-button{
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
 .dane {
   border: solid black 1px;
   border-radius: 20px;
   height: 30px;
   width: 280px;
   padding-left: 5px;
+  margin-bottom: 10px;
 }
 
-label {
+.label_form {
   font-size: 20px;
   color: rgba($color: #000000, $alpha: 1);
   position: absolute;
   right: 80%;
   opacity: 1;
   left: 10px;
+  top: 15%;
   transition: left 0.5s, opacity 0.3s;
 }
 
@@ -47,13 +55,9 @@ label {
   justify-items: center;
 }
 
-.h1 {
-  font-size: 30px;
-  color: rgba($color: black, $alpha: 1);
-}
+
 
 .button {
-  margin-top: 20px;
   border-radius: 30px;
   background-color: rgba($color: #000000, $alpha: 0.9);
   padding: 5px 10px;
@@ -62,8 +66,11 @@ label {
   cursor: pointer;
 }
 
+.form_input_contrainer {
+  position: relative;
+}
 
-input:focus + label {
+input:focus + .label_form {
   left: 300px;
   opacity: 0;
 }
@@ -72,12 +79,12 @@ input:focus + label {
   margin-top: 20px;
 }
 
-button:hover {
+.button:hover {
   background-color: white;
   color: black;
 }
 
-button:active {
+.button:active {
   position: relative;
   top: 1px;
 }
@@ -88,11 +95,11 @@ button:active {
 }
 .checkbox-container{
  display: flex;
- margin-top: 20px;
 }
 .pp{
-  margin-top: 0;
+  margin-top: 0px;
   margin-bottom: 5px;
   font-size: 20px;
 }
+
 </style>

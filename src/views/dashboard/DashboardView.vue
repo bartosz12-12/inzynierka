@@ -1,36 +1,57 @@
 <template>
-  <div class="top-panel">
-    <h1 class="inzynier" @click=" $router.replace({
-      name: linx[0].view,
-    })">Inżynierka</h1>
-    <button class="sign-out" @click="wyloguj">Wyloguj</button>
-  </div>
-  <div class="container-main">
-    <div class="navbar">
-        <div class="panel" v-for="link in linx" :key="link.name" @click=" $router.replace({
-            name: link.view,
-          })"><p>{{ link.name }}</p></div>
+  <div class="container">
+    <div class="top_panel">
+      <h1
+        class="inzynier"
+        @click="
+          $router.replace({
+            name: linx[0].view,
+          })
+        "
+      >
+        Inżynierka
+      </h1>
+      <button class="sign_out" @click="wyloguj">Wyloguj</button>
+    </div>
+    <div class="container_main">
+      <div class="navbar">
+        <div
+          class="panel"
+          v-for="link in linx"
+          :key="link.name"
+          @click="
+            $router.replace({
+              name: link.view,
+            })
+          "
+        >
+          <p>{{ link.name }}</p>
+        </div>
       </div>
-      <router-view></router-view>
+      <div class="link"><router-view></router-view></div>
+    </div>
   </div>
-  
 </template>
   <script>
 export default {
   name: "DashboardView",
-  data(){
-    return{
-        linx: [
+  data() {
+    return {
+      linx: [
         {
           name: "Warehouse",
-          view:"Warehouse"
+          view: "Warehouse",
         },
         {
           name: "Notification",
-          view:"Notification"
+          view: "Notification",
         },
-    ]
-    }
+        {
+          name: "Add Employee",
+          view: "AddEmployee",
+        },
+      ],
+    };
   },
   methods: {
     wyloguj() {
@@ -41,60 +62,72 @@ export default {
 };
 </script>
   <style scoped>
-.top-panel {
-  width: 100vw;
-  background-color: #061A26;
-  display: flex;
-  height: 40px;
-  justify-content: end;
-  
-}
-.sign-out {
-  background-color: #030526;
-  border: 0;
-  color: white;
-  cursor: pointer;
-  border-radius: 10%;
-}
-.sign-out:hover {
-  background-color: whitesmoke;
-  color:#061A26 ;
-}
-.inzynier {
-    color: whitesmoke;
-  margin: 0;
-  margin-right: auto;
-  margin-left: auto;
-}
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
 
-.inzynier:hover{
-  cursor: pointer;
-}
-.navbar {
-  height: calc(100vh - 40px);
-  width: 15vw;
-  background-color: #061A26;
-  position: fixed;
-  color: aliceblue;
-}
-.container-main{
+  .top_panel {
+    background-color: #333;
+    color: #fff;
     display: flex;
-}
-.link{
-    margin-left: 16vw;
-}
-.panel{
-    min-height: 40px;
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 5px;
+  }
+
+  .inzynier {
     cursor: pointer;
-}
-.panel:hover{
-    background-color:#6c6d63 ;
-}
-p{
-  margin: 0%;
-}
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .sign_out {
+    background-color: #d9534f;
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .sign_out:hover {
+    background-color: #c9302c;
+  }
+
+  .container_main {
+    display: flex;
+    flex: 1;
+  }
+
+  .navbar {
+    background-color: #f4f4f4;
+    width: 200px;
+    padding: 10px;
+    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .panel {
+    cursor: pointer;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: background-color 0.3s;
+  }
+
+  .panel:hover {
+    background-color: #e0e0e0;
+  }
+
+  .link {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    margin: 10px 10px 10px 10px;
+  }
+  
 </style>
   

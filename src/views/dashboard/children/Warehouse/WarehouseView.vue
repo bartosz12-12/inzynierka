@@ -1,17 +1,16 @@
 <template>
-  <div class="link">
-      <h1 class="title">Warehouse</h1>
-    <ag-grid-vue
-      class="ag-theme-alpine"
-      style="height: 500px; width: 82vw"
-      :columnDefs="columnDefs"
-      :rowData="rowData"
-      :defaultColDef="defaultColDef"
-      rowSelection="multiple"
-      animateRows="true"
-    >
-    </ag-grid-vue>
-  </div>
+  <h1 class="title">Warehouse</h1>
+  <ag-grid-vue
+    class="ag-theme-alpine"
+    style="max-height: 500px; width: 82vw"
+    :columnDefs="columnDefs"
+    :rowData="rowData"
+    :defaultColDef="defaultColDef"
+    rowSelection="multiple"
+    animateRows="true"
+    :domLayout="'autoHeight'"
+  >
+  </ag-grid-vue>
 </template>
 
 <script>
@@ -32,30 +31,19 @@ export default {
       rowData: [],
     };
   },
-  methods:{
+  methods: {
     async downloadData() {
-         const data = await this.warehouseService.getAllCompanyStructures();
-        console.log("data",data)
-        this.rowData = data.data
-    }
+      const data = await this.warehouseService.getAllCompanyStructures();
+      console.log("data", data);
+      this.rowData = data.data;
+    },
   },
-  mounted(){
-     this.downloadData();
-  }
+  mounted() {
+    this.downloadData();
+  },
 };
 </script>
 
 <style>
-.grid{
-  background-color: #061A26;
-  color: aliceblue;
-}
 
-.link{
-  background-color: #061A26;
-  margin-top: 10px;
-  color: aliceblue;
-  padding: 10px;
-  border-radius: 20px;
-}
 </style>
