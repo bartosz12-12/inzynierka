@@ -2,13 +2,13 @@
   <h1 class="title">Warehouse</h1>
   <ag-grid-vue
     class="ag-theme-alpine"
-    style="max-height: 500px; width: 82vw"
+    style="width: 100%; height: 80%"    
     :columnDefs="columnDefs"
     :rowData="rowData"
     :defaultColDef="defaultColDef"
     rowSelection="multiple"
     animateRows="true"
-    :domLayout="'autoHeight'"
+    :pagination="true" 
   >
   </ag-grid-vue>
 </template>

@@ -14,6 +14,8 @@
       <input class="form-input" type="password" name="confirmPassword" v-model="repeatedPassword"/>
       <label for="typeUser">typeUser:</label>
       <input class="form-input" type="text" name="typeUser" v-model="typeUser"/>
+      
+      
     </div>
     <button @click="register">Dodaj</button>
 </template>

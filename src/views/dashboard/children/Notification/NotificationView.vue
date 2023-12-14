@@ -3,12 +3,13 @@
   <h1 class="title">Notification</h1>
   <ag-grid-vue
     class="ag-theme-alpine"
-    style="max-height: 500px; width: 82vw"
+    style="height: 80%; width: 100%; "
     :columnDefs="columnDefs"
     :rowData="rowData"
     rowSelection="multiple"
     animateRows="true"
-    :domLayout="'autoHeight'"
+    :pagination="true" 
+    
   >
   </ag-grid-vue>
 </template>

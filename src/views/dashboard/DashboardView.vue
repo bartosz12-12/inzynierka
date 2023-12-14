@@ -74,6 +74,9 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
 
   .inzynier {
@@ -104,9 +107,12 @@ export default {
 
   .navbar {
     background-color: #f4f4f4;
-    width: 200px;
+    width: 15vw;
     padding: 10px;
     box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+    max-height: 90vh;
+    position: sticky;
+    top: 60px;
   }
 
   .panel {
