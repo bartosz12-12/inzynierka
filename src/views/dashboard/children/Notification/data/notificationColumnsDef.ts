@@ -1,10 +1,35 @@
 export default [
     {
+        headerName: "🗑",
+        field:'delete',
+        sortable:false,
+        inputWidth:50,
+        inputValue:'',
+        width:55,
+        value:'XX',
+        required:true,
+        valueGetter: () => '🗑',
+
+
+    },
+    {
+        headerName: "✎",
+        field:'edit',
+        sortable:false,
+        inputWidth:50,
+        inputValue:'',
+        width:55,
+        value:'XX',
+        required:true,
+        valueGetter: () => '✎',
+
+    },
+    {
         headerName: "ID", field: "id",
         sortable:true,
-        flex:1,
         inputValue:'',
         required:true,
+        width:55,
         toInput:true,
         label:'notification',
         cellDataType: 'number'

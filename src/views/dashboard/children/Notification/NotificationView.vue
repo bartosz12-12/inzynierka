@@ -9,7 +9,8 @@
     rowSelection="multiple"
     animateRows="true"
     :pagination="true" 
-    
+    @selectionChanged="handleSelectionChange"
+    @cellClicked="handleColumnClick"
   >
   </ag-grid-vue>
 </template>
@@ -36,6 +37,23 @@ export default {
       const data = await this.notificationService.getAllNotifications();
       console.log("data", data);
       this.rowData = data.data;
+    },
+    async handleColumnClick(params){
+        switch(params.colDef.field){
+          case 'delete':
+            this.deleteNotification(params.data.id).then(res=>{
+              console.log(res)
+              if(res.status === 200){
+                this.downloadData();
+                return;
+              }
+              console.log('err', res)
+            })
+            break;
+        }
+    },
+    async deleteNotification(id){
+        return await this.notificationService.deleteNotification(id);
     },
   },
   mounted() {

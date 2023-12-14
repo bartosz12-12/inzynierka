@@ -8,7 +8,9 @@ export enum apiPathsEnum{
 
     // Warehouse
     API_GET_ALL_WAREHOUSE = "/api/Warehouse/GetAll",
+    API_DELETE_WAREHOUSE = "/api/Warehouse/Delete/",
 
     //Notifications
-    API_GET_ALL_NOTIFICATIONS = "/api/Notifications/GetAll"
+    API_GET_ALL_NOTIFICATIONS = "/api/Notifications/GetAll",
+    API_DELETE_NOTIFICATION = "/api/Notifications/Delete/"
 }

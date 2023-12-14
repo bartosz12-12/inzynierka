@@ -13,4 +13,8 @@ export class NotificationService extends Service {
           apiPathsEnum.API_GET_ALL_NOTIFICATIONS
         );
       }
+
+    public async deleteNotification(notificationId:any) {
+       return await this.axiosInstance.delete(apiPathsEnum.API_DELETE_NOTIFICATION + notificationId)
+      }
 }

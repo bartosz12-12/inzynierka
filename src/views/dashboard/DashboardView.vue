@@ -50,6 +50,34 @@ export default {
           name: "Add Employee",
           view: "AddEmployee",
         },
+        {
+          name: "Link",
+          view: "AddEmployee",
+        },
+        {
+          name: "Link2",
+          view: "AddEmployee",
+        },
+        {
+          name: "Link3",
+          view: "AddEmployee",
+        },
+        {
+          name: "Link4",
+          view: "AddEmployee",
+        },
+        {
+          name: "Link5",
+          view: "AddEmployee",
+        },
+        {
+          name: "Link6",
+          view: "AddEmployee",
+        },
+        {
+          name: "Link7",
+          view: "AddEmployee",
+        },
       ],
     };
   },
@@ -62,78 +90,98 @@ export default {
 };
 </script>
   <style scoped>
-  .container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
-  .top_panel {
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
+.top_panel {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-  .inzynier {
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
+.inzynier {
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 
-  .sign_out {
-    background-color: #d9534f;
-    color: #fff;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+.sign_out {
+  margin-right:10px ;
+  background-color: #d9534f;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  .sign_out:hover {
-    background-color: #c9302c;
-  }
+.sign_out:hover {
+  background-color: #c9302c;
+}
 
-  .container_main {
-    display: flex;
-    flex: 1;
-  }
+.container_main {
+  display: flex;
+  flex: 1;
+}
 
-  .navbar {
-    background-color: #f4f4f4;
-    width: 15vw;
-    padding: 10px;
-    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
-    max-height: 90vh;
-    position: sticky;
-    top: 60px;
-  }
+.navbar {
+  background-color: #f4f4f4;
+  width: 15vw;
+  padding: 10px;
+  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+  max-height: 89vh;
+  position: sticky;
+  top: 60px;
+  overflow: auto;
+}
 
-  .panel {
-    cursor: pointer;
-    padding: 8px;
-    margin-bottom: 5px;
-    border-radius: 4px;
-    background-color: #fff;
-    transition: background-color 0.3s;
-  }
+.navbar::-webkit-scrollbar {
+  width: 5px;
+}
 
-  .panel:hover {
-    background-color: #e0e0e0;
-  }
+/* Stylowanie obszaru, który jest przewijany (Track) */
+.navbar::-webkit-scrollbar-track {
+  background: #fcfcfc;
+}
 
-  .link {
-    flex: 1;
-    padding: 20px;
-    background-color: #fff;
-    margin: 10px 10px 10px 10px;
-  }
-  
+/* Stylowanie "uchwytu" przewijania (Handle) */
+.navbar::-webkit-scrollbar-thumb {
+  background: #09090a;
+}
+
+/* Dodatkowy efekt po najechaniu myszką na pasek przewijania */
+.navbar::-webkit-scrollbar-thumb:hover {
+  background: #050505;
+}
+
+.panel {
+  cursor: pointer;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: background-color 0.3s;
+}
+
+.panel:hover {
+  background-color: #e0e0e0;
+}
+
+.link {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  margin: 10px 10px 10px 10px;
+}
 </style>
   

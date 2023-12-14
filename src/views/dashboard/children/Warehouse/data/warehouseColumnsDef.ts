@@ -1,5 +1,40 @@
 export default [
     {
+        headerName: "🗑",
+        field:'delete',
+        sortable:false,
+        inputWidth:50,
+        inputValue:'',
+        width:55,
+        value:'XX',
+        required:true,
+        valueGetter: () => '🗑',
+
+
+    },
+    {
+        headerName: "✎",
+        field:'edit',
+        sortable:false,
+        inputWidth:50,
+        inputValue:'',
+        width:55,
+        value:'XX',
+        required:true,
+        valueGetter: () => '✎',
+
+    },
+    {
+        headerName: "ID", field: "id",
+        sortable:true,
+        inputValue:'',
+        width:55,
+        required:true,
+        toInput:true,
+        label:'notification',
+        cellDataType: 'number'
+    },
+    {
         headerName: "Name", field: "name",
         sortable:true,
         inputWidth:50,

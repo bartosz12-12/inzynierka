@@ -13,4 +13,7 @@ export class WarehouseService extends Service {
           apiPathsEnum.API_GET_ALL_WAREHOUSE
         );
       }
+      public async deleteProdukt(warehouseId:any) {
+       return await this.axiosInstance.delete(apiPathsEnum.API_DELETE_WAREHOUSE + warehouseId)
+      }
 }
