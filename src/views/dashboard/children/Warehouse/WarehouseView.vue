@@ -1,5 +1,9 @@
 <template>
-  <h1 class="title">Warehouse</h1>
+  <div class="menubar"><h1 class="title">Warehouse</h1><img class="create" @click="
+    $router.replace({
+      name: 'WarehouseAdd',
+    })
+  " src="@\components\icons\square-plus.png" alt="Opis obrazu"></div>
   <ag-grid-vue
     class="ag-theme-alpine"
     style="width: 100%; height: 80%"
@@ -22,7 +26,6 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import warehouseColumnsDef from "@/views/dashboard/children/Warehouse/data/warehouseColumnsDef";
 import { WarehouseService } from "@/services/WarehouseService/WarehouseService.ts";
-
 export default {
   components: {
     AgGridVue,
@@ -65,4 +68,16 @@ export default {
 </script>
 
 <style>
+.create{
+  width: 35px;
+  height: 100%;
+  margin-top:auto ;
+  margin-bottom: auto;
+  margin-right: 10px;
+  
+}
+.create:hover{
+  cursor: pointer;
+  opacity: 60%;
+}
 </style>

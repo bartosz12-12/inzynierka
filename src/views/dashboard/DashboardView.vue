@@ -183,5 +183,6 @@ export default {
   background-color: #fff;
   margin: 10px 10px 10px 10px;
 }
+
 </style>
   

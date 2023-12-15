@@ -5,6 +5,7 @@ import DashboardView from "@/views/dashboard/DashboardView.vue"
 import LinkView from "@/views/dashboard/children/LinkView.vue"
 import NotificationView from "@/views/dashboard/children/Notification/NotificationView.vue"
 import AddEmployeeViewView from "@/views/dashboard/children/Employees/AddEmployeeView.vue"
+import WarehouseAddWiev from "@/views/dashboard/children/Warehouse/add/WarehouseAddView.vue"
 const DashboardRoutes: Array<RouteRecordRaw> = [
     {
         path: '/dashboard',
@@ -17,6 +18,11 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
                 path:'warehouse',
                 name:'Warehouse',
                 component:WarehouseView
+            },
+            {
+                path:'warehouse/add',
+                name:'WarehouseAdd',
+                component:WarehouseAddWiev
             },
             {
                 path:'notification',
