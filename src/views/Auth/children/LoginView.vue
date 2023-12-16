@@ -1,19 +1,19 @@
 <template>
   <div class="body">
   <div class="login_box">
-    <h1 class="h1">Zaloguj się</h1>
-    <p class="pp">Podaj Email</p>
+    <h1 class="h1">{{$t("LogIn")}}</h1>
+    <p class="pp">{{$t("EnterYourEmail")}}</p>
     <div class="form_input_contrainer">
       <input class="dane" type="email" name="email" v-model="email" />
-      <label class="label_form" v-if="!email" for="email">Login</label>
+      <label class="label_form" v-if="!email" for="email">{{$t("Login")}}</label>
     </div>
-    <p class="pp">Podaj Hasło</p>
+    <p class="pp">{{$t("EnterYourPassword")}}</p>
     <div class="form_input_contrainer">
       <input class="dane" type="password" name="password"  v-model="password"/>
-      <label  class="label_form" v-if="!password" for="password">Hasło</label>
+      <label  class="label_form" v-if="!password" for="password">{{$t("Password")}}</label>
     </div>
     <div class="checkbox-container">
-      <p id="zap">Zapamiętaj mnie</p>
+      <p id="zap">{{$t("RememberMe")}}</p>
       <input type="checkbox">
   </div>
   <div class="container-button">
@@ -21,8 +21,8 @@
     $router.replace({
       name: 'Register',
     })
-  ">Rejestracja</button>
-  <button class="button" @click="login()">Zatwierdz</button>
+  ">{{$t("Registration")}}</button>
+  <button class="button" @click="login()">{{$t("Confirm")}}</button>
   </div>
   </div>
 </div>
@@ -49,28 +49,9 @@ export default {
         if(loginResult && loginResult.message){
             console.log("potwierdzam")
         }
-
-
-        //testy łopatologiczne 
-    //     const loginData = {
-    //   email: "queen56@ethereal.email",
-    //   password: "c3n3p8AteP4m22GMmR"
-    // };
-    // const headers = {
-    //   // Tutaj możesz dodać nagłówki, jeśli są potrzebne
-    // };
-    //     axios.post("http://localhost:7057/api/Auth/Login", loginData, { headers })
-    //   .then((response) => {
-    //     // Obsługa sukcesu - dostęp do odpowiedzi serwera
-    //     console.log("Odpowiedź serwera:", response.data);
-    //   })
-
-
         this.$router.push({ name: 'Dashboard' });
       },
     },
-
-
 }
 </script>
 

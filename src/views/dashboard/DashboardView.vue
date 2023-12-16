@@ -39,15 +39,15 @@ export default {
     return {
       linx: [
         {
-          name: "Warehouse",
+          name: this.$t("Warehouse"),
           view: "Warehouse",
         },
         {
-          name: "Notification",
+          name: this.$t("Notifications"),
           view: "Notification",
         },
         {
-          name: "Add Employee",
+          name: this.$t("CreateAccountForEmployee"),
           view: "AddEmployee",
         },
         {
@@ -84,6 +84,7 @@ export default {
   methods: {
     wyloguj() {
       localStorage.removeItem("token");
+      localStorage.removeItem('userData');
       this.$router.push({ name: "Login" });
     },
   },

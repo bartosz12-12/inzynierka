@@ -1,6 +1,6 @@
 
 <template>
-  <h1 class="title">Notification</h1>
+  <h1 class="title">{{$t("Notifications")}}</h1>
   <ag-grid-vue
     class="ag-theme-alpine"
     style="height: 80%; width: 100%; "
@@ -28,7 +28,73 @@ export default {
   data() {
     return {
       notificationService: new NotificationService(),
-      columnDefs: notificationColumnsDef,
+      columnDefs: [
+        {
+        headerName: "🗑",
+        field:'delete',
+        sortable:false,
+        inputWidth:50,
+        inputValue:'',
+        width:55,
+        value:'XX',
+        required:true,
+        valueGetter: () => '🗑',
+
+
+    },
+    {
+        headerName: "✎",
+        field:'edit',
+        sortable:false,
+        inputWidth:50,
+        inputValue:'',
+        width:55,
+        value:'XX',
+        required:true,
+        valueGetter: () => '✎',
+
+    },
+    {
+        headerName: this.$t("Id"), field: "id",
+        sortable:true,
+        inputValue:'',
+        required:true,
+        width:55,
+        toInput:true,
+        label:'notification',
+        cellDataType: 'number'
+    },
+    {
+        headerName: this.$t("Title"), field: "title",
+        sortable:true,
+        flex:1,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'notification',
+        cellDataType: 'text'
+    },
+    {
+        headerName: this.$t("TypeNotification"), field: "type",
+        sortable:true,
+        flex:1,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'notification',
+        cellDataType: 'text'
+    },
+    {
+        headerName: this.$t("Description"), field: "description",
+        sortable:true,
+        flex:1,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'notification',
+        cellDataType: 'text'
+    },
+      ],
       rowData: [],
     };
   },

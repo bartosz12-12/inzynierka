@@ -1,19 +1,25 @@
 <template>
   
-    <h1 class="title">Create new employee</h1>
+    <h1 class="title">{{$t("CreateAccountForEmployee")}}</h1>
     <div class="form_input">
-      <label for="name">Name:</label>
+      <label for="name">{{$t("Name")}}:</label>
       <input class="form-input" type="text" name="name"  v-model="name"/>
-      <label for="surname">Surname:</label>
+      <label for="surname">{{$t("Surname")}}:</label>
       <input class="form-input" type="text" name="surname" v-model="surname"/>
-      <label for="email">email:</label>
+      <label for="email">{{$t("Email")}}:</label>
       <input class="form-input" type="email" name="email" v-model="email"/>
-      <label for="password">password:</label>
+      <label for="password">{{$t("Password")}}:</label>
       <input class="form-input" type="password" name="password" v-model="password"/>
-      <label for="confirmPassword">confirmPassword:</label>
+      <label for="confirmPassword">{{$t("RepeatThePassword")}}</label>
       <input class="form-input" type="password" name="confirmPassword" v-model="repeatedPassword"/>
-      <label for="typeUser">typeUser:</label>
-      <input class="form-input" type="text" name="typeUser" v-model="typeUser"/>
+      <label for="typeUser">{{$t("TypeUser")}}</label>
+      <select class="form-input" name="typeUser" v-model="typeUser">
+        <option value="2">{{$t("WarehouseManager")}}</option>
+        <option value="3">{{$t("ConstructionManager")}}</option>
+        <option value="4">{{$t("Secretariat")}}</option>
+        <option value="5">{{$t("WarehouseManager")}} + {{$t("ConstructionManager")}}</option>
+        <option value="6">{{$t("ConstructionManager")}} + {{$t("Secretariat")}}</option>
+      </select>
       
       
     </div>
@@ -32,18 +38,19 @@ export default {
       email: "",
       password: "",
       repeatedPassword: "",
-      typeUser:"",
+      typeUser: null,
     };
   },
   methods: {
     async register() {
+      
       const registerResult = await this.authService.register({
         name: this.name,
         surname: this.surname,
         email: this.email,
         password: this.password,
         confirmPassword: this.repeatedPassword,
-        language: "pl",
+        language: navigator.language.substring(0, 2),
         typeUser: this.typeUser
       });
       console.log("rezultat", registerResult);

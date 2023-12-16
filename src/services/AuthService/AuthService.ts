@@ -55,5 +55,12 @@ export class AuthService extends Service {
        
         return response.data;
     }
+    public async verify(token: string): Promise<any>{
+
+        const response: AxiosResponse<any> = await this.axiosInstance.get(apiPathsEnum.API_VERIFIY_USER + token);
+        
+       
+        return response.data;
+    }
 
 }

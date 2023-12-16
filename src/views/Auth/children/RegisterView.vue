@@ -1,43 +1,48 @@
 <template>
   <div class="body">
     <div class="container">
-      <h1 class="h1">Zarejestruj się</h1>
-      <p class="pp">Podaj imię</p>
+      <h1 class="h1">{{$t("SignUp")}}</h1>
+      <p class="pp">{{$t("ProvideYourName")}}</p>
       <div class="form_input_contrainer">
         <input class="dane" type="text" name="name" v-model="name" />
-        <label class="label_form" v-if="!name" for="name">Name</label>
+        <label class="label_form" v-if="!name" for="name">{{$t("Name")}}</label>
       </div>
-      <p class="pp">Podaj nazwisko</p>
+      <p class="pp">{{$t("ProvideYourSurname")}}</p>
       <div class="form_input_contrainer">
         <input class="dane" type="text" name="surname" v-model="surname" />
-        <label class="label_form" v-if="!surname" for="surname">Surname</label>
+        <label class="label_form" v-if="!surname" for="surname">{{$t("Surname")}}</label>
       </div>
-      <p class="pp">Podaj email</p>
+      <p class="pp">{{$t("EnterYourEmail")}}</p>
       <div class="form_input_contrainer">
-        <input class="dane" type="email" name="email" v-model="email" />
-        <label class="label_form" v-if="!email" for="email">Login</label>
+        <input class="dane" type="email" name="email" v-model="email" @input="validateEmailOnInput" />
+        <label class="label_form" v-if="!email" for="email">{{$t("Email")}}</label><br>
+        <span class="error-message" v-if="emailError" style="color: red">{{$t("InvalidEmailAddressFormat")}}</span>
       </div>
-      <p class="pp">Podaj hasło</p>
+      <p class="pp">{{$t("EnterYourPassword")}}</p>
       <div class="form_input_contrainer">
         <input
           class="dane"
           type="password"
           name="password"
           v-model="password"
+          @input="validatePasswordOnInput"
         />
-        <label class="label_form" v-if="!password" for="password">Hasło</label>
+        <label class="label_form" v-if="!password" for="password">{{$t("Password")}}</label><br>
+        <span class="error-message" v-if="passwordError" style="color: red">{{$t("ThePasswordShouldContain6Characters1UppercaseLetterAnd1SpecialCharacter")}}</span>
       </div>
-      <p class="pp">Powtórz hasło</p>
+      <p class="pp">{{$t("RepeatThePassword")}}</p>
       <div class="form_input_contrainer">
         <input
           class="dane"
           type="password"
           name="password"
           v-model="repeatedPassword"
+          @input= "validateRepeatedPasswordOnInput"
         />
         <label class="label_form" v-if="!repeatedPassword" for="password"
-          >Hasło</label
-        >
+          >{{$t("Password")}}</label
+        ><br>
+        <span class="error-message" v-if="repeatedPasswordError" style="color: red">{{$t("TheEnteredPasswordsDoNotMatch")}}</span>
       </div>
       <div class="container-button">
         <button
@@ -48,9 +53,9 @@
             })
           "
         >
-          Logowanie
+          {{$t("LogIn")}}
         </button>
-        <button class="button" @click="register">Zarejestruj się</button>
+        <button class="button" @click="register">{{$t("SignUp")}}</button>
       </div>
     </div>
   </div>
@@ -67,22 +72,67 @@ export default {
       email: "",
       password: "",
       repeatedPassword: "",
+      emailError: false,
+      passwordError: false,
+      repeatedPasswordError: false
     };
   },
   methods: {
     async register() {
+      // Walidacja adresu e-mail
+      if (!this.validateEmail(this.email)) {
+        this.emailError = true;
+        return;
+      } else {
+        this.emailError = false;
+      }
+
+      // Walidacja hasła
+      if (!this.validatePassword(this.password)) {
+        this.passwordError = true;
+        return;
+      } else {
+        this.passwordError = false;
+      }
+
+      if (!this.validateRepeatedPassword(this.repeatedPassword)) {
+        this.repeatedPasswordError = true;
+        return;
+      } else {
+        this.repeatedPasswordError = false;
+      }
       const registerResult = await this.authService.register({
         name: this.name,
         surname: this.surname,
         email: this.email,
         password: this.password,
         confirmPassword: this.repeatedPassword,
-        language: "pl",
+        language: navigator.language.substring(0, 2),
       });
-      console.log("rezultat", registerResult);
-      if (registerResult && registerResult.message) {
-        console.log(0, registerResult.message);
+      this.$router.push({ name: 'SuccessRegister' });
+    },
+    validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    },
+    validatePassword(password) {
+      const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+      return passwordRegex.test(password);
+    },
+    validateRepeatedPassword(repeatedPassword) {
+      if(!(this.password === this.repeatedPassword)){
+          return false;
       }
+      return true;
+    },
+    validateEmailOnInput() {
+      this.emailError = !this.validateEmail(this.email);
+    },
+    validatePasswordOnInput() {
+      this.passwordError = !this.validatePassword(this.password);
+    },
+    validateRepeatedPasswordOnInput() {
+      this.repeatedPasswordError = !this.validateRepeatedPassword(this.repeatedPassword);
     },
   },
 };

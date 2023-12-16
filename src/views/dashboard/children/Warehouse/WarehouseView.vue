@@ -1,5 +1,5 @@
 <template>
-  <h1 class="title">Warehouse</h1>
+  <h1 class="title">{{$t("Warehouse")}}</h1>
   <ag-grid-vue
     class="ag-theme-alpine"
     style="width: 100%; height: 80%"
@@ -30,7 +30,153 @@ export default {
   data() {
     return {
       warehouseService: new WarehouseService(),
-      columnDefs: warehouseColumnsDef,
+      columnDefs: [
+        {
+        headerName: "🗑",
+        field:'delete',
+        sortable:false,
+        inputWidth:50,
+        inputValue:'',
+        width:55,
+        value:'XX',
+        required:true,
+        valueGetter: () => '🗑',
+
+
+    },
+    {
+        headerName: "✎",
+        field:'edit',
+        sortable:false,
+        inputWidth:50,
+        inputValue:'',
+        width:55,
+        value:'XX',
+        required:true,
+        valueGetter: () => '✎',
+
+    },
+    {
+        headerName: this.$t("Id"), field: "id",
+        sortable:true,
+        inputValue:'',
+        width:55,
+        required:true,
+        toInput:true,
+        label:'notification',
+        cellDataType: 'number'
+    },
+    {
+        headerName: this.$t("Name2"), field: "name",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'text'
+    },
+    {
+        headerName: this.$t("Description"), field: "description",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'text'
+    },
+    {
+        headerName: this.$t("Manufacturer"), field: "manufacturer",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'text'
+    },
+    {
+        headerName: this.$t("UnitOfMeasurement"), field: "unitOfMeasurement",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'text'
+    },
+    {
+        headerName: this.$t("CatalogNumber"), field: "catalogNumber",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'text'
+    },
+    {
+        headerName: this.$t("QuantityInStock"), field: "quantityInStock",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'number'
+    },
+    {
+        headerName: this.$t("PurchaseDate"), field: "purchaseDate",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'date'
+    },
+    {
+        headerName: this.$t("DeliveryDate"), field: "deliveryDate",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'date'
+    },
+    {
+        headerName: this.$t("ExpiryDate"), field: "expiryDate",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'date'
+    },
+    {
+        headerName: this.$t("Category"), field: "category",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'text'
+    },
+    {
+        headerName: this.$t("MinimumStockLevel"), field: "minimumStockLevel",
+        sortable:true,
+        inputWidth:50,
+        inputValue:'',
+        required:true,
+        toInput:true,
+        label:'warehouse',
+        cellDataType: 'number'
+    },
+      ],
       rowData: [],
     };
   },

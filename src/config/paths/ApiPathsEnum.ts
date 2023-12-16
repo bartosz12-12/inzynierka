@@ -1,5 +1,5 @@
 export enum apiPathsEnum{
-    BASE_API_URL = "https://localhost:7057/",
+    BASE_API_URL = "http://localhost:7057/",
 
     /** Auth */
     API_LOGIN = "api/Auth/Login",
