@@ -1,6 +1,7 @@
 
 <template>
-  <h1 class="title">{{$t("Notifications")}}</h1>
+  <div class="menubar"><h1 class="title">{{$t("Notifications")}}</h1></div>
+
   <ag-grid-vue
     class="ag-theme-alpine"
     style="height: 80%; width: 100%; "

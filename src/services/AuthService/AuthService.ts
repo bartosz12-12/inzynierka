@@ -38,8 +38,9 @@ export class AuthService extends Service {
         /** zapisujemy token ze zwrotki z logowania do localstorage, skad jest przepisywany do headersa dla backendu, oraz sluzy
          *  do weryfikacji middleware */
         response.data && response.data.token ? localStorage.setItem("token", response.data.verificationToken) : null;
+        response.data && response.data.typeUser ? localStorage.setItem("typeUser", response.data.typeUser) : 1;
         this.userService.setUserData(response.data);
-        console.log("to jest token:",localStorage.getItem('token'));
+        console.log("to jest typeUser:",localStorage.getItem('typeUser'));
         return response.data;
     }
 

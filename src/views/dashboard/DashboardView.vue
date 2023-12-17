@@ -15,17 +15,21 @@
     </div>
     <div class="container_main">
       <div class="navbar">
-        <div
-          class="panel"
-          v-for="link in linx"
-          :key="link.name"
-          @click="
-            $router.replace({
-              name: link.view,
-            })
-          "
-        >
-          <p>{{ link.name }}</p>
+        <div v-for="link in linx" :key="link.name">
+          <div
+            v-if="
+              Array.isArray(link.permission) &&
+              link.permission.includes(typUser)
+            "
+            class="panel"
+            @click="
+              $router.replace({
+                name: link.view,
+              })
+            "
+          >
+            <p>{{ link.name }}</p>
+          </div>
         </div>
       </div>
       <div class="link"><router-view></router-view></div>
@@ -37,46 +41,57 @@ export default {
   name: "DashboardView",
   data() {
     return {
+      typUser: localStorage.getItem("typeUser"),
       linx: [
         {
           name: this.$t("Warehouse"),
           view: "Warehouse",
+          permission: ["1"],
         },
         {
           name: this.$t("Notifications"),
           view: "Notification",
+          permission: ["1"],
         },
         {
           name: this.$t("CreateAccountForEmployee"),
           view: "AddEmployee",
+          permission: ["1"],
         },
         {
           name: "Link",
           view: "AddEmployee",
+          permission: ["1"],
         },
         {
           name: "Link2",
           view: "AddEmployee",
+          permission: ["1"],
         },
         {
           name: "Link3",
           view: "AddEmployee",
+          permission: ["2"],
         },
         {
           name: "Link4",
           view: "AddEmployee",
+          permission: ["2","1"],
         },
         {
           name: "Link5",
           view: "AddEmployee",
+          permission: ["2"],
         },
         {
           name: "Link6",
           view: "AddEmployee",
+          permission: ["2"],
         },
         {
           name: "Link7",
           view: "AddEmployee",
+          permission: ["2","1"],
         },
       ],
     };
@@ -84,7 +99,7 @@ export default {
   methods: {
     wyloguj() {
       localStorage.removeItem("token");
-      localStorage.removeItem('userData');
+      localStorage.removeItem("userData");
       this.$router.push({ name: "Login" });
     },
   },
@@ -117,7 +132,7 @@ export default {
 }
 
 .sign_out {
-  margin-right:10px ;
+  margin-right: 10px;
   background-color: #d9534f;
   color: #fff;
   padding: 8px;

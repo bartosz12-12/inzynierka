@@ -1,5 +1,9 @@
 <template>
-  <h1 class="title">{{$t("Warehouse")}}</h1>
+  <div class="menubar"><h1 class="title">{{$t("Warehouse")}}</h1><img class="create" @click="
+    $router.replace({
+      name: 'WarehouseAdd',
+    })
+  " src="@\components\icons\square-plus.png" alt="Opis obrazu"></div>
   <ag-grid-vue
     class="ag-theme-alpine"
     style="width: 100%; height: 80%"
@@ -211,4 +215,16 @@ export default {
 </script>
 
 <style>
+.create{
+  width: 35px;
+  height: 100%;
+  margin-top:auto ;
+  margin-bottom: auto;
+  margin-right: 10px;
+  
+}
+.create:hover{
+  cursor: pointer;
+  opacity: 60%;
+}
 </style>
