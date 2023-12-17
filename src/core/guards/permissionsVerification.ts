@@ -4,7 +4,7 @@ import {apiPathsEnum} from "@/config/paths/ApiPathsEnum";
 const permissionsVerification = (to: any, from: any, next: NavigationGuardNext) => {
     const typeUser = localStorage.getItem('typeUser');
     console.log(typeUser)
-    if (typeUser === "2") {
+    if (typeUser === "1") {
         next();
     } else {
         next({ name: 'Warehouse' });
