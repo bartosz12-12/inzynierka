@@ -98,7 +98,7 @@ export default {
   },
 
   mounted(){
-    console.log("to jest ",this.typUser === "1");
+    console.log("to jest ",typeof(localStorage.getItem('typeUser')));
   },
   methods: {
     wyloguj() {

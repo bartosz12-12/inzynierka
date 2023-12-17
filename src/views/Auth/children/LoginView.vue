@@ -5,7 +5,7 @@
     <p class="pp">{{$t("EnterYourEmail")}}</p>
     <div class="form_input_contrainer">
       <input class="dane" type="email" name="email" v-model="email" />
-      <label class="label_form" v-if="!email" for="email">{{$t("Login")}}</label>
+      <label class="label_form" v-if="!email" for="email">{{$t("Email")}}</label>
     </div>
     <p class="pp">{{$t("EnterYourPassword")}}</p>
     <div class="form_input_contrainer">
@@ -23,6 +23,11 @@
     })
   ">{{$t("Registration")}}</button>
   <button class="button" @click="login()">{{$t("Confirm")}}</button>
+  </div>
+  <div>
+   
+    <p id="zap" @click="toForgotPassword" style="font-size: 12px; margin-top: 10px;"><b>Zapomniałem hasła</b></p>
+   
   </div>
   </div>
 </div>
@@ -43,14 +48,18 @@ export default {
     } ,
     methods:{
       async login(){
-        console.log("to jest",this.password,this.email)
         const loginResult = await this.authService.login({email:this.email, password:this.password});
-        console.log("rezultat",loginResult)
+       
         if(loginResult && loginResult.message){
             console.log("potwierdzam")
         }
         this.$router.push({ name: 'Dashboard' });
       },
+
+      toForgotPassword(){
+        this.$router.push({name: 'ForgotPassword'})
+      }
+
     },
 }
 </script>

@@ -25,12 +25,11 @@ export default {
         this.url = window.location.href;
         const parts = this.url.split('?token=');
         this.token = parts[parts.length - 1]
-        
+        this.verifyUser();
         this.redirectMessage2= this.$t("UserHasBeenSuccessfullyVerified");
         setTimeout(() => {
             this.redirectMessage = "Redirecting to the login page";
         }, 3000); 
-        this.verifyUser();
     },
     methods:{
         async verifyUser() {

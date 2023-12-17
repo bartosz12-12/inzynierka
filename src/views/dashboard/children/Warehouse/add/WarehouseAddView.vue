@@ -20,7 +20,7 @@
       return {
         data: [
           {
-            label: this.$t("Name"),
+            label: this.$t("Name2"),
             type: "text",
             name: "name",
             model: "",
@@ -51,7 +51,7 @@
           },
           {
             label: this.$t("QuantityInStock"),
-            type: "text",
+            type: "number",
             name: "quantityInStock",
             model: "",
           },
@@ -81,7 +81,7 @@
           },
           {
             label: this.$t("MinimumStockLevel"),
-            type: "text",
+            type: "number",
             name: "minimumStockLevel",
             model: "",
           },

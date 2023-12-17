@@ -6,7 +6,8 @@ import {ILoginDto} from "@/services/AuthService/dtos/ILoginDto";
 import {apiPathsEnum} from "@/config/paths/ApiPathsEnum";
 import errorCodesEnumObject from "@/config/dictionaries/errorCodesEnumObject";
 import {UserService} from "@/services/UserService/UserService";
-
+import {IForgotPasswordDto} from "@/services/AuthService/dtos/IForgotPasswordDto";
+import {IResetPasswordDto} from "@/services/AuthService/dtos/IResetPasswordDto";
 
 export class AuthService extends Service {
     private dataValidator:AuthDataValidator;
@@ -59,6 +60,20 @@ export class AuthService extends Service {
     public async verify(token: string): Promise<any>{
 
         const response: AxiosResponse<any> = await this.axiosInstance.get(apiPathsEnum.API_VERIFIY_USER + token);
+        
+       
+        return response.data;
+    }
+    public async forgotPassword(forgotPasswordEmail: IForgotPasswordDto): Promise<any>{
+
+        const response: AxiosResponse<any> = await this.axiosInstance.post(apiPathsEnum.API_FORGOT_PASSWORD, forgotPasswordEmail);
+        
+       
+        return response.data;
+    }
+    public async resetPassword(resetPassword: IResetPasswordDto): Promise<any>{
+
+        const response: AxiosResponse<any> = await this.axiosInstance.patch(apiPathsEnum.API_RESET_PASSWORD, resetPassword);
         
        
         return response.data;
