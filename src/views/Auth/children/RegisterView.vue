@@ -28,8 +28,9 @@
           @input="validatePasswordOnInput"
         />
         <label class="label_form" v-if="!password" for="password">{{$t("Password")}}</label><br>
-        <span class="error-message" v-if="passwordError" style="color: red">{{$t("ThePasswordShouldContain6Characters1UppercaseLetterAnd1SpecialCharacter")}}</span>
+        
       </div>
+      <span class="error-message" v-if="passwordError" style="color: red">{{$t("ThePasswordShouldContain6Characters1UppercaseLetterAnd1SpecialCharacter")}}</span>
       <p class="pp">{{$t("RepeatThePassword")}}</p>
       <div class="form_input_contrainer">
         <input
@@ -37,7 +38,7 @@
           type="password"
           name="password"
           v-model="repeatedPassword"
-          @input= "validateRepeatedPasswordOnInput"
+          @input="validateRepeatedPasswordOnInput"
         />
         <label class="label_form" v-if="!repeatedPassword" for="password"
           >{{$t("Password")}}</label
@@ -139,6 +140,9 @@ export default {
 </script>
   
   <style lang="scss" scoped>
+  span{
+    max-width: 20vw;
+  }
 .container {
   display: grid;
   grid-column: auto;

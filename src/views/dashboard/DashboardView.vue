@@ -96,6 +96,10 @@ export default {
       ],
     };
   },
+
+  mounted(){
+    console.log("to jest ",this.typUser === "1");
+  },
   methods: {
     wyloguj() {
       localStorage.removeItem("token");
