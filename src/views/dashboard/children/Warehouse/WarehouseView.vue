@@ -138,7 +138,7 @@ export default {
         required:true,
         toInput:true,
         label:'warehouse',
-        cellDataType: 'date'
+        cellDataType: 'data'
     },
     {
         headerName: this.$t("DeliveryDate"), field: "deliveryDate",
@@ -148,7 +148,7 @@ export default {
         required:true,
         toInput:true,
         label:'warehouse',
-        cellDataType: 'date'
+        cellDataType: 'data'
     },
     {
         headerName: this.$t("ExpiryDate"), field: "expiryDate",
@@ -158,7 +158,7 @@ export default {
         required:true,
         toInput:true,
         label:'warehouse',
-        cellDataType: 'date'
+        cellDataType: 'data'
     },
     {
         headerName: this.$t("Category"), field: "category",
@@ -186,7 +186,7 @@ export default {
   },
   methods: {
     async downloadData() {
-      const data = await this.warehouseService.getAllCompanyStructures();
+      const data = await this.warehouseService.getAllWarehouse();
       console.log("data", data);
       this.rowData = data.data;
     },
@@ -202,11 +202,17 @@ export default {
               console.log('err', res)
             })
             break;
+          case 'edit':
+            this.editProduct(params.data.id)
+            break;
         }
     },
     async deleteProdukt(id){
         return await this.warehouseService.deleteProdukt(id);
     },
+    editProduct(id){
+      this.$router.push({ name: 'ProductUpdate', params: { id } });
+    }
   },
   mounted() {
     this.downloadData();

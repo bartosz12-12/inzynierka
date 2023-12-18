@@ -42,4 +42,5 @@ export default {
     ThePasswordShouldContain6Characters1UppercaseLetterAnd1SpecialCharacter: "Hasło powinno zawierać 6 znaków, 1 dużą literę oraz 1 znak specjalny",
     TheEnteredPasswordsDoNotMatch: "Hasła nie są takie same",
     CreateNewProduct: "Stwórz nowy produkt",
+    UpdateProduct: "Zaktualizuj produkt o id",
 }

@@ -37,6 +37,8 @@
     </select>
   </div>
   <button class="add" @click="register">Dodaj</button>
+  <button class="back">Wstecz</button>
+
 </template>
 
 <script>
@@ -123,6 +125,15 @@ label {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+.back {
+  background-color: #ff0505;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 20px;
 }
 
 .add:hover {

@@ -12,6 +12,8 @@ import LinkView from "@/views/dashboard/children/LinkView.vue"
 import NotificationView from "@/views/dashboard/children/Notification/NotificationView.vue"
 import AddEmployeeViewView from "@/views/dashboard/children/Employees/AddEmployeeView.vue"
 import WarehouseAddWiev from "@/views/dashboard/children/Warehouse/add/WarehouseAddView.vue"
+import UpdateWarehouseView from "@/views/dashboard/children/Warehouse/update/UpdateWarehouseView.vue"
+
 
 const DashboardRoutes: Array<RouteRecordRaw> = [
     {
@@ -27,10 +29,14 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
                 component:WarehouseView
             },
             {
-                beforeEnter: permissionsVerification,
                 path:'warehouse/add',
                 name:'WarehouseAdd',
                 component:WarehouseAddWiev
+            },
+            {
+                path:'warehouse/update/:id',
+                name:'ProductUpdate',
+                component:UpdateWarehouseView
             },
             {
                 path:'notification',

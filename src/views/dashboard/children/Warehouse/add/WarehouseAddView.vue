@@ -12,12 +12,17 @@
       
     </div>
     <button class="add" @click="create">Dodaj</button>
+    <button class="back" @click="back">Wstecz</button>
+
   </template>
   
   <script>
+  import { WarehouseService } from "@/services/WarehouseService/WarehouseService.ts";
+
   export default {
     data() {
       return {
+        warehouseService: new WarehouseService(),
         data: [
           {
             label: this.$t("Name2"),
@@ -89,11 +94,26 @@
       };
     },
     methods: {
-      create() {
-          for( let i=0 ; i<this.data.length ; i++){
-              console.log(this.data[i]);
-          }
+      async create() {
+        const data = {
+        name: this.data[0].model,
+        description: this.data[1].model,
+        manufacturer: this.data[2].model,
+        unitOfMeasurement: this.data[3].model,
+        catalogNumber: this.data[4].model,
+        quantityInStock: this.data[5].model,
+        purchaseDate: this.data[6].model,
+        deliveryDate: this.data[7].model,
+        expiryDate: this.data[8].model,
+        category: this.data[9].model,
+        minimumStockLevel: this.data[10].model,
+      };
+      await this.warehouseService.createProduct(data);
+      this.$router.push({ name: 'Warehouse' })
       },
+      back(){
+        this.$router.push({ name: 'Warehouse' })
+    }
     },
   };
   </script>

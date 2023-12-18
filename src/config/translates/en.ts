@@ -41,5 +41,5 @@ export default {
     ThePasswordShouldContain6Characters1UppercaseLetterAnd1SpecialCharacter: "The password should contain 6 characters, 1 uppercase letter, and 1 special character",
     TheEnteredPasswordsDoNotMatch: "The entered passwords do not match",
     CreateNewProduct: "Create New Product",
-
+    UpdateProduct: "update product with id"
 }
