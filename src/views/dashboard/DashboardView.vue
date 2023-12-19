@@ -19,6 +19,7 @@
         Inżynierka
       </h1>
       <div class="settings" v-if="setings">
+        <p>{{ user.name }} {{ user.surname }}</p>
         <button class="sign_out" @click="wyloguj">Wyloguj</button>
       </div>
       <img
@@ -52,10 +53,12 @@
   </div>
 </template>
   <script>
+
 export default {
   name: "DashboardView",
   data() {
     return {
+      user:'',
       setings: false,
       isNavbarOpen: true,
       typUser: localStorage.getItem("typeUser"),
@@ -113,9 +116,10 @@ export default {
       ],
     };
   },
-
+  inject: ['$user'],
   mounted() {
     console.log("to jest ", typeof localStorage.getItem("typeUser"));
+    this.user = this.$user;
   },
   methods: {
     wyloguj() {

@@ -25,7 +25,7 @@ const i18n = createI18n({
 const app = createApp(App);
 app.use(router);
 app.use(i18n);
-
+console.log('Providing user:', user);
 app.provide('$user', user);
 app.config.globalProperties.$isInstanceOf = () => {
     return false;
