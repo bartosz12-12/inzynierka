@@ -1,6 +1,13 @@
 <template>
   <div class="container">
     <div class="top_panel">
+      <img
+        class="hamburger"
+        @click="toggleNavbar"
+        src="../../components/icons/menu.png"
+        alt=""
+      />
+
       <h1
         class="inzynier"
         @click="
@@ -11,10 +18,18 @@
       >
         Inżynierka
       </h1>
-      <button class="sign_out" @click="wyloguj">Wyloguj</button>
+      <div class="settings" v-if="setings">
+        <button class="sign_out" @click="wyloguj">Wyloguj</button>
+      </div>
+      <img
+        @click="settings_on"
+        id="set"
+        src="../../components/icons/setting.png"
+        alt="setting"
+      />
     </div>
     <div class="container_main">
-      <div class="navbar">
+      <div class="navbar" v-if="isNavbarOpen">
         <div v-for="link in linx" :key="link.name">
           <div
             v-if="
@@ -41,6 +56,8 @@ export default {
   name: "DashboardView",
   data() {
     return {
+      setings: false,
+      isNavbarOpen: true,
       typUser: localStorage.getItem("typeUser"),
       linx: [
         {
@@ -76,7 +93,7 @@ export default {
         {
           name: "Link4",
           view: "AddEmployee",
-          permission: ["2","1"],
+          permission: ["2", "1"],
         },
         {
           name: "Link5",
@@ -91,20 +108,26 @@ export default {
         {
           name: "Link7",
           view: "AddEmployee",
-          permission: ["2","1"],
+          permission: ["2", "1"],
         },
       ],
     };
   },
 
-  mounted(){
-    console.log("to jest ",typeof(localStorage.getItem('typeUser')));
+  mounted() {
+    console.log("to jest ", typeof localStorage.getItem("typeUser"));
   },
   methods: {
     wyloguj() {
       localStorage.removeItem("token");
       localStorage.removeItem("userData");
       this.$router.push({ name: "Login" });
+    },
+    toggleNavbar() {
+      this.isNavbarOpen = !this.isNavbarOpen;
+    },
+    settings_on() {
+      this.setings = !this.setings;
     },
   },
 };
@@ -136,13 +159,14 @@ export default {
 }
 
 .sign_out {
-  margin-right: 10px;
   background-color: #d9534f;
   color: #fff;
   padding: 8px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  max-width: 50%;
+  margin-top: 10px;
 }
 
 .sign_out:hover {
@@ -202,6 +226,33 @@ export default {
   padding: 20px;
   background-color: #fff;
   margin: 10px 10px 10px 10px;
+}
+.hamburger {
+  height: 40px;
+  margin-left: 10px;
+}
+.hamburger:hover {
+  cursor: pointer;
+}
+.settings {
+  position: absolute;
+  top: 60px; /* Odległość od góry top_panel */
+  right: 0;
+  height: 200px;
+  width: 150px;
+  background-color: rgba(51, 51, 51, 0.9);
+  margin-right: 5px;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+#set {
+  height: 30px;
+  margin-right: 10px;
+
+}
+#set:hover{
+  cursor: pointer;
 }
 </style>
   
