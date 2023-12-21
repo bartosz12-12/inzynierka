@@ -47,5 +47,8 @@ export default {
     ConstructionManagerLastName: "Construction manager last name",
     TemporaryWarehouseName: "Temporary warehouse name",
     TemporaryWarehouse_id: "temporary warehouse",
-
+    AddProductToTemporaryWarehouseById:"Add the product to the temporary warehouse",
+    temporaryWarehouseId : "Temporary storage id",
+    warehouseId : "product id",
+    quantity: "quantity"
 }

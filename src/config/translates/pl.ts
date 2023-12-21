@@ -47,5 +47,9 @@ export default {
     ConstructionManagerFirstName: "Imię kierownika budowy",
     ConstructionManagerLastName: "Nazwisko kierownika budowy",
     TemporaryWarehouseName: "Nazwa magazynu tymczasowego",
-    TemporaryWarehouse_id: "Magazyn tymczasow"
+    TemporaryWarehouse_id: "Magazyn tymczasow",
+    AddProductToTemporaryWarehouseById: "Dodaj produkt do magazynu tymczasowego",
+    temporaryWarehouseId : "Id magazynu tymczasowego",
+    warehouseId : "Id produktu",
+    quantity: "ilość"
 }

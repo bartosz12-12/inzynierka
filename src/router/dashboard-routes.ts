@@ -68,12 +68,6 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
                 name:'TemporaryWarehouseDetail',
                 component:TemporaryWarehouseDetailView,
             },
-            {
-                path:'temporaryWarehouseAddView/:id',
-                name:'TemporaryWarehouseAddView',
-                component:TemporaryWarehouseAddView,
-            },
-
         ]
     }
 ];

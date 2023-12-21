@@ -31,4 +31,5 @@ export enum apiPathsEnum{
     API_GET_WAREHOUSEITEM_BY_ID_TEMPORARYWAREHOUSE_ID = "/api/WarehouseItem/temporary/",
     API_DELETE_WAREHOUSEITEM = "/api/WarehouseItem/remove/",
     API_UPDATE_WAREHOUSEITEM = "/api/WarehouseItem/update/",
+    API_CREATE_WAREHOUSEITEM ="/api/WarehouseItem/add"
 }

@@ -11,6 +11,7 @@ export class TemporaryWarehouseService extends Service {
           apiPathsEnum.API_GET_ALL_TEMPORARYWAREHOUSE
         );
       }
+
     //   public async getProductId(warehouseId:any) {
     //     return await this.axiosInstance.get(
     //       apiPathsEnum.API_GET_WAREHOSE_BY_ID + warehouseId);
