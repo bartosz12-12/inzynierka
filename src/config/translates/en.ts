@@ -40,6 +40,10 @@ export default {
     InvalidEmailAddressFormat: "Invalid email address format",
     ThePasswordShouldContain6Characters1UppercaseLetterAnd1SpecialCharacter: "The password should contain 6 characters, 1 uppercase letter, and 1 special character",
     TheEnteredPasswordsDoNotMatch: "The entered passwords do not match",
-    CreateNewProduct: "Create New Product",
-    UpdateProduct: "update product with id"
+    CreateNewProduct: "Create new product",
+    UpdateProduct: "update product with id",
+    TemporaryWarehouse: "Temporarys Warehouse",
+    ConstructionManagerFirstName: "Construction manager first name",
+    ConstructionManagerLastName: "Construction manager last name",
+    TemporaryWarehouseName: "Temporary warehouse name",
 }

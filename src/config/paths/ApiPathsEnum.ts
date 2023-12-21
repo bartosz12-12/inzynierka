@@ -16,5 +16,19 @@ export enum apiPathsEnum{
     API_CREATE_PRODUCT = "/api/Warehouse/Create",
     //Notifications
     API_GET_ALL_NOTIFICATIONS = "/api/Notifications/GetAll",
-    API_DELETE_NOTIFICATION = "/api/Notifications/Delete/"
+    API_DELETE_NOTIFICATION = "/api/Notifications/Delete/",
+
+    //TemporaryWarehouse
+    API_GET_ALL_TEMPORARYWAREHOUSE = "/api/TemporaryWarehouse/GetAll",
+    API_GET_TEMPORARYWAREHOUSE_BY_ID = "/api/TemporaryWarehouse/Get/",
+    API_DELETE_TEMPORARYWAREHOUSE = "/api/TemporaryWarehouse/Delete/",
+    API_UPDATE_TEMPORARYWAREHOUSE = "/api/TemporaryWarehouse/Update/",
+    API_CREATE_TEMPORARYWAREHOUSE ="/api/TemporaryWarehouse/Create",
+
+    //WarehouseItem
+    API_GET_ALL_WAREHOUSEITEM = "/api/WarehouseItem/GetAll",
+    API_GET_WAREHOUSEITEM_BY_ID_WAREHOUSE_ID = "/api/WarehouseItem/warehouse/",
+    API_GET_WAREHOUSEITEM_BY_ID_TEMPORARYWAREHOUSE_ID = "/api/WarehouseItem/temporary/",
+    API_DELETE_WAREHOUSEITEM = "/api/WarehouseItem/remove/",
+    API_UPDATE_WAREHOUSEITEM = "/api/WarehouseItem/update/",
 }

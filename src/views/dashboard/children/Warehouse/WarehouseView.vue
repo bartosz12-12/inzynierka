@@ -37,7 +37,6 @@
 import { AgGridVue } from "ag-grid-vue3";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import warehouseColumnsDef from "@/views/dashboard/children/Warehouse/data/warehouseColumnsDef";
 import { WarehouseService } from "@/services/WarehouseService/WarehouseService.ts";
 
 export default {
@@ -79,7 +78,7 @@ export default {
           width: 55,
           required: true,
           toInput: true,
-          label: "notification",
+          label: "warehouse",
           cellDataType: "number",
         },
         {

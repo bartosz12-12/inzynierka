@@ -79,39 +79,9 @@ export default {
           permission: ["1"],
         },
         {
-          name: "Link",
-          view: "AddEmployee",
+          name: this.$t("TemporaryWarehouse"),
+          view: "TemporaryWarehouse",
           permission: ["1"],
-        },
-        {
-          name: "Link2",
-          view: "AddEmployee",
-          permission: ["1"],
-        },
-        {
-          name: "Link3",
-          view: "AddEmployee",
-          permission: ["2"],
-        },
-        {
-          name: "Link4",
-          view: "AddEmployee",
-          permission: ["2", "1"],
-        },
-        {
-          name: "Link5",
-          view: "AddEmployee",
-          permission: ["2"],
-        },
-        {
-          name: "Link6",
-          view: "AddEmployee",
-          permission: ["2"],
-        },
-        {
-          name: "Link7",
-          view: "AddEmployee",
-          permission: ["2", "1"],
         },
       ],
     };
@@ -125,6 +95,7 @@ export default {
     wyloguj() {
       localStorage.removeItem("token");
       localStorage.removeItem("userData");
+      this.$user = null;
       this.$router.push({ name: "Login" });
     },
     toggleNavbar() {

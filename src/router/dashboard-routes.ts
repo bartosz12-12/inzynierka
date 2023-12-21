@@ -13,7 +13,8 @@ import NotificationView from "@/views/dashboard/children/Notification/Notificati
 import AddEmployeeViewView from "@/views/dashboard/children/Employees/AddEmployeeView.vue"
 import WarehouseAddWiev from "@/views/dashboard/children/Warehouse/add/WarehouseAddView.vue"
 import UpdateWarehouseView from "@/views/dashboard/children/Warehouse/update/UpdateWarehouseView.vue"
-
+import TemporaryWarehouse from "@/views/dashboard/children/TemporaryWarehouse/TemporaryWarehouseView.vue"
+import AddTemporaryWarehouse from "@/views/dashboard/children/TemporaryWarehouse/add/AddTemporaryWarehouseView.vue"
 
 const DashboardRoutes: Array<RouteRecordRaw> = [
     {
@@ -23,6 +24,7 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
         beforeEnter: tokenVerificationMiddleware,
         redirect:{name:'Warehouse'},
         children: [
+            //Warehouse
             {
                 path:'warehouse',
                 name:'Warehouse',
@@ -38,16 +40,29 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
                 name:'ProductUpdate',
                 component:UpdateWarehouseView
             },
+
+            //Notification
             {
                 path:'notification',
                 name:'Notification',
                 component:NotificationView
             },
+
+            //Employee
             {
-                path:'AddEmployee',
+                path:'addEmployee',
                 name:'AddEmployee',
                 component:AddEmployeeViewView
-            }
+            },
+
+            //TemporaryWarehouse
+            {
+                path:'temporaryWarehouse',
+                name:'TemporaryWarehouse',
+                component:TemporaryWarehouse,
+            },
+            
+
         ]
     }
 ];

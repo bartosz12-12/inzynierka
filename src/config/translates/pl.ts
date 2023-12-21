@@ -43,4 +43,8 @@ export default {
     TheEnteredPasswordsDoNotMatch: "Hasła nie są takie same",
     CreateNewProduct: "Stwórz nowy produkt",
     UpdateProduct: "Zaktualizuj produkt o id",
+    TemporaryWarehouse: "Magazyny tymczasowe",
+    ConstructionManagerFirstName: "Imię kierownika budowy",
+    ConstructionManagerLastName: "Nazwisko kierownika budowy",
+    TemporaryWarehouseName: "Nazwa magazynu tymczasowego"
 }
