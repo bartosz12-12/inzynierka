@@ -29,17 +29,14 @@
   </ag-grid-vue>
   <div v-if="popup" class="overlay" @click="backMT">
     <div class="popup" @click.stop>
-      <div class="form_input">
-        <div v-for="warehouse in data" :key="warehouse.label">
-          <label for="warehouse.label">{{ warehouse.label }}:</label>
-          <input
-            class="form-input"
-            :type="warehouse.type"
-            :name="warehouse.name"
-            v-model="warehouse.model"
-          />
-        </div>
-      </div>
+      <label for="warehouseId">warehouseId</label>
+      <select class="form-input" name="warehouseId" v-model="warehouseId">
+        <option v-for="element in data" :key="element.value" :value="element.value">
+          {{ element.name}}
+        </option>
+      </select>
+      <label for="quantity">quantity</label>
+      <input  class="form-input" type="number" v-model="quantity">
       <button class="add" @click="create">Dodaj</button>
       <button class="back" @click="backMT">Wstecz</button>
     </div>
@@ -49,6 +46,7 @@
 <script>
 import { AgGridVue } from "ag-grid-vue3";
 import { WarehouseItemService } from "@/services/WarehouseItem/WarehouseItemService";
+import { WarehouseService } from "@/services/WarehouseService/WarehouseService.ts";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 export default {
@@ -57,8 +55,12 @@ export default {
   },
   data() {
     return {
+      warehouseId:'',
+      quantity:'',
       popup: false,
       rowData: [],
+      warehouseService: new WarehouseService(),
+      warehouseSelect: [],
       WarehouseItemService: new WarehouseItemService(),
       id: this.$route.params.id,
       columnDefs: [
@@ -130,18 +132,6 @@ export default {
         },
       ],
       data: [
-        {
-          label: this.$t("warehouseId"),
-          type: "number",
-          name: "warehouseId",
-          model: "",
-        },
-        {
-          label: this.$t("quantity"),
-          type: "number",
-          name: "quantity",
-          model: "",
-        },
       ],
     };
   },
@@ -149,8 +139,8 @@ export default {
     back() {
       this.$router.push({ name: "TemporaryWarehouse" });
     },
-    backMT(){
-      this.popup = false
+    backMT() {
+      this.popup = false;
     },
     popupActive() {
       this.popup = true;
@@ -158,11 +148,12 @@ export default {
     async create() {
       const data = {
         temporaryWarehouseId: this.id,
-        temporaryWarehouse:{},
-        warehouseId: this.data[0].model,
-        warehouse:{},
-        quantity: this.data[1].model,
+        temporaryWarehouse: {},
+        warehouseId: this.warehouseId,
+        warehouse: {},
+        quantity: this.quantity,
       };
+      console.log("to jest data:",data)
       await this.WarehouseItemService.createWarehouseItem(data);
       this.popup = false;
       this.downloadData();
@@ -172,6 +163,11 @@ export default {
       const data = await this.WarehouseItemService.getAllWarehouseByTemporaryId(
         this.id
       );
+      const select = await this.warehouseService.getAllWarehouse();
+      this.warehouseSelect = select.data;
+      this.warehouseSelect.forEach((element) => {
+        this.data.push({ value: element.id, name: element.name });
+      });
       this.rowData = data.data;
     },
   },
