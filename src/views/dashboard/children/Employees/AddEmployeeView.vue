@@ -37,7 +37,6 @@
     </select>
   </div>
   <button class="add" @click="register">Dodaj</button>
-  <button class="back">Wstecz</button>
 
 </template>
 

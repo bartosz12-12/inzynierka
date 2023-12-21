@@ -46,4 +46,6 @@ export default {
     ConstructionManagerFirstName: "Construction manager first name",
     ConstructionManagerLastName: "Construction manager last name",
     TemporaryWarehouseName: "Temporary warehouse name",
+    TemporaryWarehouse_id: "temporary warehouse",
+
 }

@@ -14,7 +14,9 @@ import AddEmployeeViewView from "@/views/dashboard/children/Employees/AddEmploye
 import WarehouseAddWiev from "@/views/dashboard/children/Warehouse/add/WarehouseAddView.vue"
 import UpdateWarehouseView from "@/views/dashboard/children/Warehouse/update/UpdateWarehouseView.vue"
 import TemporaryWarehouse from "@/views/dashboard/children/TemporaryWarehouse/TemporaryWarehouseView.vue"
-import AddTemporaryWarehouse from "@/views/dashboard/children/TemporaryWarehouse/add/AddTemporaryWarehouseView.vue"
+import TemporaryWarehouseDetailView from "@/views/dashboard/children/TemporaryWarehouse/detail/TemporaryWarehouseDetailView.vue"
+import TemporaryWarehouseAddView from "@/views/dashboard/children/TemporaryWarehouse/detail/add/TemporaryWarehouseAddView.vue"
+
 
 const DashboardRoutes: Array<RouteRecordRaw> = [
     {
@@ -61,7 +63,16 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
                 name:'TemporaryWarehouse',
                 component:TemporaryWarehouse,
             },
-            
+            {
+                path:'temporaryWarehouseDetail/:id',
+                name:'TemporaryWarehouseDetail',
+                component:TemporaryWarehouseDetailView,
+            },
+            {
+                path:'temporaryWarehouseAddView/:id',
+                name:'TemporaryWarehouseAddView',
+                component:TemporaryWarehouseAddView,
+            },
 
         ]
     }

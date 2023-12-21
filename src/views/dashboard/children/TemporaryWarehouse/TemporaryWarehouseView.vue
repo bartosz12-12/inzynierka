@@ -132,7 +132,7 @@ export default {
           inputValue: "",
           required: true,
           toInput: true,
-          label: "temporaryWarehouseName",
+          label: "temporaryWarehouse",
           cellDataType: "text",
         },
       ],
@@ -161,10 +161,25 @@ export default {
             console.log("err", res);
           });
           break;
+        case "id":
+          this.detailTemporaryWarehouse(params.data.id);
+          break;
+        case "constructionManagerFirstName":
+          this.detailTemporaryWarehouse(params.data.id);
+          break;
+        case "constructionManagerLastName":
+          this.detailTemporaryWarehouse(params.data.id);
+          break;
+        case "temporaryWarehouseName":
+          this.detailTemporaryWarehouse(params.data.id);
+          break;
       }
     },
     async deleteTemporaryWarehouse(id) {
       return await this.temporaryWarehouseService.deleteTemporaryWarehouse(id);
+    },
+    detailTemporaryWarehouse(id) {
+      this.$router.push({ name: "TemporaryWarehouseDetail", params: { id } });
     },
     async create() {
       const data = {
@@ -194,11 +209,11 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Przezroczyste ciemne tło */
+  background-color: rgba(0, 0, 0, 0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Upewnij się, że jest na wierzchu */
+  z-index: 999; 
 }
 
 .popup {
