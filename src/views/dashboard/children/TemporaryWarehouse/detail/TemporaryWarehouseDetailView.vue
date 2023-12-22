@@ -29,13 +29,13 @@
   </ag-grid-vue>
   <div v-if="popup" class="overlay" @click="backMT">
     <div class="popup" @click.stop>
-      <label for="warehouseId">warehouseId</label>
+      <label for="warehouseId">{{ $t("warehouseId")}}</label>
       <select class="form-input" name="warehouseId" v-model="warehouseId">
         <option v-for="element in data" :key="element.value" :value="element.value">
           {{ element.name}}
         </option>
       </select>
-      <label for="quantity">quantity</label>
+      <label for="quantity">{{ $t("quantity") }}</label>
       <input  class="form-input" type="number" v-model="quantity">
       <button class="add" @click="create">Dodaj</button>
       <button class="back" @click="backMT">Wstecz</button>
@@ -153,10 +153,17 @@ export default {
         warehouse: {},
         quantity: this.quantity,
       };
-      console.log("to jest data:",data)
-      await this.WarehouseItemService.createWarehouseItem(data);
+      if(data.quantity <= 0){
+        alert(this.$t("TemporaryErrorQuantity") )
+      }
+      if(data.warehouseId === ''){
+        alert( this.$t("TemporaryErrorWarehouse") )
+      }
+      else{
+        await this.WarehouseItemService.createWarehouseItem(data);
       this.popup = false;
       this.downloadData();
+      }
     },
 
     async downloadData() {

@@ -51,5 +51,8 @@ export default {
     AddProductToTemporaryWarehouseById: "Dodaj produkt do magazynu tymczasowego",
     temporaryWarehouseId : "Id magazynu tymczasowego",
     warehouseId : "Id produktu",
-    quantity: "ilość"
+    quantity: "ilość",
+    TemporaryErrorWarehouse:"Wybierz Id produktu!",
+    TemporaryErrorQuantity:"Ilość nie może być zerem lub na minusie!!",
+    WarehouseNameError:"Nazwa magazynu jest za krótka co najmniej 4 znaki!"
 }

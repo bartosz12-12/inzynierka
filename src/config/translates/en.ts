@@ -50,5 +50,9 @@ export default {
     AddProductToTemporaryWarehouseById:"Add the product to the temporary warehouse",
     temporaryWarehouseId : "Temporary storage id",
     warehouseId : "product id",
-    quantity: "quantity"
+    quantity: "quantity",
+    TemporaryErrorWarehouse:"Select Product ID!",
+    TemporaryErrorQuantity:"Quantity cannot be zero or minus!!",
+    WarehouseNameError:"The name of the magazine is too short, at least 4 characters!"
+
 }

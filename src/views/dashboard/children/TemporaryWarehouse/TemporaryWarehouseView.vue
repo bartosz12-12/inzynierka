@@ -187,9 +187,14 @@ export default {
         constructionManagerLastName: this.$user.surname,
         temporaryWarehouseName: this.data[0].model,
       };
-      await this.temporaryWarehouseService.createTemporaryWarehouse(data);
+      if(data.temporaryWarehouseName.length <= 3 ){
+        alert(this.$t("WarehouseNameError"))
+      }
+      else{
+        await this.temporaryWarehouseService.createTemporaryWarehouse(data);
       this.popup = false;
       this.downloadData();
+      }
     },
 
     back() {
