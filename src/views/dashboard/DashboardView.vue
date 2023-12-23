@@ -69,6 +69,16 @@ export default {
           permission: ["1"],
         },
         {
+          name: this.$t("TemporaryWarehouse"),
+          view: "TemporaryWarehouse",
+          permission: ["1"],
+        },
+        {
+          name: "Zgłoszenia wewnętrzne",
+          view: "InternalReports",
+          permission: ["1"],
+        },
+        {
           name: this.$t("Notifications"),
           view: "Notification",
           permission: ["1"],
@@ -76,11 +86,6 @@ export default {
         {
           name: this.$t("CreateAccountForEmployee"),
           view: "AddEmployee",
-          permission: ["1"],
-        },
-        {
-          name: this.$t("TemporaryWarehouse"),
-          view: "TemporaryWarehouse",
           permission: ["1"],
         },
       ],

@@ -1,5 +1,5 @@
 export enum apiPathsEnum{
-    BASE_API_URL = "https://localhost:7057/",
+    BASE_API_URL = "http://localhost:7057/",
 
     /** Auth */
     API_LOGIN = "api/Auth/Login",
@@ -31,5 +31,11 @@ export enum apiPathsEnum{
     API_GET_WAREHOUSEITEM_BY_ID_TEMPORARYWAREHOUSE_ID = "/api/WarehouseItem/temporary/",
     API_DELETE_WAREHOUSEITEM = "/api/WarehouseItem/remove/",
     API_UPDATE_WAREHOUSEITEM = "/api/WarehouseItem/update/",
-    API_CREATE_WAREHOUSEITEM ="/api/WarehouseItem/add"
+    API_CREATE_WAREHOUSEITEM ="/api/WarehouseItem/add",
+
+    //Reports
+    API_GET_ALL_REPORTS = "/api/Report/GetAll",
+    API_GET_REPORT_BY_ID = "/api/Report/Get/",
+    API_CREATE_REPORT ="/api/Report/Create",
+    API_DELETE_REPORT = "/api/Report/Delete/",
 }
