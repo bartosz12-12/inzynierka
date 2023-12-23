@@ -30,7 +30,7 @@
         <div v-for="warehouse in data" :key="warehouse.label">
           <label :for="warehouse.name">{{ warehouse.label }}:</label>
           <input
-            class="form-input"
+            :class="{'form-input': true, 'red-border': nameWarehouse}"
             :type="warehouse.type"
             :name="warehouse.name"
             v-model="warehouse.model"
@@ -54,6 +54,7 @@ export default {
   },
   data() {
     return {
+      nameWarehouse: false,
       popup: false,
       rowData: [],
       temporaryWarehouseService: new TemporaryWarehouseService(),
@@ -188,7 +189,7 @@ export default {
         temporaryWarehouseName: this.data[0].model,
       };
       if(data.temporaryWarehouseName.length <= 3 ){
-        alert(this.$t("WarehouseNameError"))
+        this.nameWarehouse = true
       }
       else{
         await this.temporaryWarehouseService.createTemporaryWarehouse(data);
@@ -230,5 +231,8 @@ export default {
   max-width: 80%;
   max-height: 80%;
   overflow-y: auto;
+}
+.red-border {
+  border: 2px solid red;
 }
 </style>

@@ -2,42 +2,68 @@
   <div class="menubar">
     <h1 class="title">{{ $t("CreateAccountForEmployee") }}</h1>
   </div>
-  <div class="form_input">
-    <label for="name">{{ $t("Name") }}:</label>
-    <input class="form-input" type="text" name="name" v-model="name" />
-    <label for="surname">{{ $t("Surname") }}:</label>
-    <input class="form-input" type="text" name="surname" v-model="surname" />
-    <label for="email">{{ $t("Email") }}:</label>
-    <input class="form-input" type="email" name="email" v-model="email" />
-    <label for="password">{{ $t("Password") }}:</label>
-    <input
-      class="form-input"
-      type="password"
-      name="password"
-      v-model="password"
-    />
-    <label for="confirmPassword">{{ $t("RepeatThePassword") }}</label>
-    <input
-      class="form-input"
-      type="password"
-      name="confirmPassword"
-      v-model="repeatedPassword"
-    />
-    <label for="typeUser">{{ $t("TypeUser") }}</label>
-    <select class="form-input" name="typeUser" v-model="typeUser">
-      <option value="2">{{ $t("WarehouseManager") }}</option>
-      <option value="3">{{ $t("ConstructionManager") }}</option>
-      <option value="4">{{ $t("Secretariat") }}</option>
-      <option value="5">
-        {{ $t("WarehouseManager") }} + {{ $t("ConstructionManager") }}
-      </option>
-      <option value="6">
-        {{ $t("ConstructionManager") }} + {{ $t("Secretariat") }}
-      </option>
-    </select>
-  </div>
-  <button class="add" @click="register">Dodaj</button>
-
+  <form @submit.prevent="register">
+    <div class="form_input">
+      <label for="name">{{ $t("Name") }}:</label>
+      <input
+        required="true"
+        class="form-input"
+        type="text"
+        name="name"
+        v-model="name"
+      />
+      <label for="surname">{{ $t("Surname") }}:</label>
+      <input
+        required="true"
+        class="form-input"
+        type="text"
+        name="surname"
+        v-model="surname"
+      />
+      <label for="email">{{ $t("Email") }}:</label>
+      <input
+        required="true"
+        class="form-input"
+        type="email"
+        name="email"
+        v-model="email"
+      />
+      <label for="password">{{ $t("Password") }}:</label>
+      <input
+        required="true"
+        class="form-input"
+        type="password"
+        name="password"
+        v-model="password"
+      />
+      <label for="confirmPassword">{{ $t("RepeatThePassword") }}</label>
+      <input
+        class="form-input"
+        type="password"
+        name="confirmPassword"
+        v-model="repeatedPassword"
+        required="true"
+      />
+      <label for="typeUser">{{ $t("TypeUser") }}</label>
+      <select
+        class="form-input"
+        name="typeUser"
+        v-model="typeUser"
+        required="true"
+      >
+        <option value="2">{{ $t("WarehouseManager") }}</option>
+        <option value="3">{{ $t("ConstructionManager") }}</option>
+        <option value="4">{{ $t("Secretariat") }}</option>
+        <option value="5">
+          {{ $t("WarehouseManager") }} + {{ $t("ConstructionManager") }}
+        </option>
+        <option value="6">
+          {{ $t("ConstructionManager") }} + {{ $t("Secretariat") }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="add">Dodaj</button>
+  </form>
 </template>
 
 <script>
@@ -46,9 +72,10 @@ import { AuthService } from "@/services/AuthService/AuthService";
 export default {
   data() {
     return {
+      authService: new AuthService(),
       name: "",
       surname: "",
-      authService: new AuthService(),
+      
       email: "",
       password: "",
       repeatedPassword: "",
@@ -70,6 +97,12 @@ export default {
       if (registerResult && registerResult.message) {
         console.log(0, registerResult.message);
       }
+      this.name = ""
+      this.surname = ""
+      this.email = ""
+      this.password = ""
+      this.repeatedPassword = ""
+      this.typeUser = null
     },
   },
 };
@@ -100,7 +133,6 @@ export default {
   background: #050505;
 }
 
-
 label {
   display: block;
   margin-bottom: 5px;
@@ -114,7 +146,6 @@ label {
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-
 }
 
 .add {

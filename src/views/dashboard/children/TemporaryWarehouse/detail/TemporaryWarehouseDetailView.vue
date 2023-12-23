@@ -29,14 +29,22 @@
   </ag-grid-vue>
   <div v-if="popup" class="overlay" @click="backMT">
     <div class="popup" @click.stop>
-      <label for="warehouseId">{{ $t("warehouseId")}}</label>
-      <select class="form-input" name="warehouseId" v-model="warehouseId">
-        <option v-for="element in data" :key="element.value" :value="element.value">
-          {{ element.name}}
+      <label for="warehouseId">{{ $t("warehouseId") }}</label>
+      <select
+        :class="{ 'form-input': true, 'red-border': redId }"
+        name="warehouseId"
+        v-model="warehouseId"
+      >
+        <option
+          v-for="element in data"
+          :key="element.value"
+          :value="element.value"
+        >
+          {{ element.name }}
         </option>
       </select>
       <label for="quantity">{{ $t("quantity") }}</label>
-      <input  class="form-input" type="number" v-model="quantity">
+      <input :class="{'form-input': true, 'red-border': redQ}" type="number" v-model="quantity" />
       <button class="add" @click="create">Dodaj</button>
       <button class="back" @click="backMT">Wstecz</button>
     </div>
@@ -55,8 +63,10 @@ export default {
   },
   data() {
     return {
-      warehouseId:'',
-      quantity:'',
+      redId: false,
+      redQ: false,
+      warehouseId: "",
+      quantity: "",
       popup: false,
       rowData: [],
       warehouseService: new WarehouseService(),
@@ -131,8 +141,7 @@ export default {
           cellDataType: "text",
         },
       ],
-      data: [
-      ],
+      data: [],
     };
   },
   methods: {
@@ -153,16 +162,15 @@ export default {
         warehouse: {},
         quantity: this.quantity,
       };
-      if(data.quantity <= 0){
-        alert(this.$t("TemporaryErrorQuantity") )
+      if (data.quantity <= 0) {
+        this.redQ = true
       }
-      if(data.warehouseId === ''){
-        alert( this.$t("TemporaryErrorWarehouse") )
-      }
-      else{
+      if (data.warehouseId === "") {
+        this.redId =true
+      }if(data.quantity > 0 && data.warehouseId !== "") {
         await this.WarehouseItemService.createWarehouseItem(data);
-      this.popup = false;
-      this.downloadData();
+        this.popup = false;
+        this.downloadData();
       }
     },
 
