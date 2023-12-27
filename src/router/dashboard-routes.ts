@@ -17,6 +17,7 @@ import TemporaryWarehouse from "@/views/dashboard/children/TemporaryWarehouse/Te
 import TemporaryWarehouseDetailView from "@/views/dashboard/children/TemporaryWarehouse/detail/TemporaryWarehouseDetailView.vue"
 import TemporaryWarehouseAddView from "@/views/dashboard/children/TemporaryWarehouse/detail/add/TemporaryWarehouseAddView.vue"
 import InternalReports from "@/views/dashboard/children/InternalReports/InternalReports.vue"
+import WarehouseDetails from "@/views/dashboard/children/Warehouse/detail/WarehouseDetailsView.vue"
 
 
 const DashboardRoutes: Array<RouteRecordRaw> = [
@@ -42,6 +43,11 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
                 path:'warehouse/update/:id',
                 name:'ProductUpdate',
                 component:UpdateWarehouseView
+            },
+            {
+                path:'warehouse/details/:id',
+                name:'WarehouseDetail',
+                component:WarehouseDetails,
             },
 
             //Notification

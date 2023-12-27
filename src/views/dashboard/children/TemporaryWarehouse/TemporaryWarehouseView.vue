@@ -162,16 +162,7 @@ export default {
             console.log("err", res);
           });
           break;
-        case "id":
-          this.detailTemporaryWarehouse(params.data.id);
-          break;
-        case "constructionManagerFirstName":
-          this.detailTemporaryWarehouse(params.data.id);
-          break;
-        case "constructionManagerLastName":
-          this.detailTemporaryWarehouse(params.data.id);
-          break;
-        case "temporaryWarehouseName":
+        default:
           this.detailTemporaryWarehouse(params.data.id);
           break;
       }

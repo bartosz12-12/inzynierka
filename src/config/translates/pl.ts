@@ -54,5 +54,6 @@ export default {
     quantity: "ilość",
     TemporaryErrorWarehouse:"Wybierz Id produktu!",
     TemporaryErrorQuantity:"Ilość nie może być zerem lub na minusie!!",
-    WarehouseNameError:"Nazwa magazynu jest za krótka co najmniej 4 znaki!"
+    WarehouseNameError:"Nazwa magazynu jest za krótka co najmniej 4 znaki!",
+    Details: "Szczegóły"
 }

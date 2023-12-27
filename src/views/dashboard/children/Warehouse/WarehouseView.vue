@@ -2,7 +2,11 @@
   <div class="menubar">
     <h1 class="title">{{ $t("Warehouse") }}</h1>
     <div class="functions">
-      <button @click="choose_end_material" class="end-material" :class="{ 'grey-button': !end_material, 'green-button': end_material }">
+      <button
+        @click="choose_end_material"
+        class="end-material"
+        :class="{ 'grey-button': !end_material, 'green-button': end_material }"
+      >
         kończące sie materiały
       </button>
       <img
@@ -233,6 +237,9 @@ export default {
         case "edit":
           this.editProduct(params.data.id);
           break;
+        default:
+          this.detailWarehouse(params.data.id);
+          break;
       }
     },
     choose_end_material() {
@@ -249,6 +256,9 @@ export default {
     },
     editProduct(id) {
       this.$router.push({ name: "ProductUpdate", params: { id } });
+    },
+    detailWarehouse(id) {
+      this.$router.push({ name: "WarehouseDetail", params: { id } });
     },
   },
   mounted() {

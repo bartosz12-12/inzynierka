@@ -6,7 +6,7 @@
 
   <ag-grid-vue
     class="ag-theme-alpine"
-    style="height: 80%; width: 100%"
+    style="height: 69vh; width: 100%"
     :columnDefs="columnDefs"
     :rowData="rowData"
     rowSelection="multiple"
@@ -75,10 +75,13 @@ export default {
           toInput: true,
           label: "notification",
           cellDataType: "text",
+          autoHeight: true,
+          cellStyle: { "white-space": "normal" },
         },
         {
           headerName: this.$t("TypeNotification"),
           field: "type",
+          autoHeight: true,
           sortable: true,
           flex: 1,
           inputValue: "",
@@ -97,12 +100,17 @@ export default {
           toInput: true,
           label: "notification",
           cellDataType: "text",
+          autoHeight: true,
+          cellStyle: { "white-space": "normal" },
         },
       ],
       rowData: [],
     };
   },
   methods: {
+    getRowHeight: function (params) {
+      return 50;
+    },
     async downloadData() {
       const data = await this.notificationService.getAllNotifications();
       console.log("data", data);

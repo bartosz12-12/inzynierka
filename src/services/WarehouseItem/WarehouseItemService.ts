@@ -11,7 +11,11 @@ export class WarehouseItemService extends Service {
           apiPathsEnum.API_GET_WAREHOUSEITEM_BY_ID_TEMPORARYWAREHOUSE_ID + temporaryWarehouseId
         );
       }
-
+      public async getAllWarehouseByWarehouseId( warehouseId:any) {
+        return await this.axiosInstance.get(
+          apiPathsEnum.API_GET_WAREHOUSEITEM_BY_ID_WAREHOUSE_ID + warehouseId
+        );
+      }
       public async createWarehouseItem(product: object) {
         return await this.axiosInstance.post(
           apiPathsEnum.API_CREATE_WAREHOUSEITEM,
