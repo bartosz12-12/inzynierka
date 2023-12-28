@@ -178,6 +178,7 @@ export default {
       const data = await this.WarehouseItemService.getAllWarehouseByTemporaryId(
         this.id
       );
+      this.data = []
       const select = await this.warehouseService.getAllWarehouse();
       this.warehouseSelect = select.data;
       this.warehouseSelect.forEach((element) => {

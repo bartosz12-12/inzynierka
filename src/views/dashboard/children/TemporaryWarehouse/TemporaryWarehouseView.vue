@@ -30,7 +30,7 @@
         <div v-for="warehouse in data" :key="warehouse.label">
           <label :for="warehouse.name">{{ warehouse.label }}:</label>
           <input
-            :class="{'form-input': true, 'red-border': nameWarehouse}"
+            :class="{ 'form-input': true, 'red-border': nameWarehouse }"
             :type="warehouse.type"
             :name="warehouse.name"
             v-model="warehouse.model"
@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable'
 import { TemporaryWarehouseService } from "@/services/TemporaryWarehouseService/TemporaryWarehouseService";
 import { AgGridVue } from "ag-grid-vue3";
 import "ag-grid-community/styles/ag-grid.css";
@@ -54,6 +56,7 @@ export default {
   },
   data() {
     return {
+      dataDelete: [],
       nameWarehouse: false,
       popup: false,
       rowData: [],
@@ -77,17 +80,6 @@ export default {
           value: "XX",
           required: true,
           valueGetter: () => "🗑",
-        },
-        {
-          headerName: "✎",
-          field: "edit",
-          sortable: false,
-          inputWidth: 50,
-          inputValue: "",
-          width: 55,
-          value: "XX",
-          required: true,
-          valueGetter: () => "✎",
         },
         {
           headerName: this.$t("Id"),
@@ -156,6 +148,8 @@ export default {
           this.deleteTemporaryWarehouse(params.data.id).then((res) => {
             console.log(res);
             if (res.status === 200) {
+              console.log("to jest data Delete: ", this.dataDelete);
+              this.generatePDF();
               this.downloadData();
               return;
             }
@@ -167,8 +161,52 @@ export default {
           break;
       }
     },
+    // generatePDF() {
+    //   const pdf = new jsPDF();
+    //   pdf.text('Dokument Zwrotu do Magazynu', 20, 10);
+
+    //   this.dataDelete.data.forEach((item, index) => {
+    //     const yPos = 20 + index * 60;
+    //     pdf.text(`Produkt ID: ${item.id}`, 20, yPos);
+    //     pdf.text(`Nazwa produktu: ${item.warehouse.name}`, 20, yPos + 10);
+    //     pdf.text(`Ilosc: ${item.quantity}`, 20, yPos + 20);
+    //     pdf.text(`Magazyn tymczasowy: ${item.temporaryWarehouse.temporaryWarehouseName}`, 20, yPos + 30);
+    //     // Dodaj więcej informacji w zależności od potrzeb
+    //   });
+
+    //   pdf.save('Dokument_Zwrotu_do_Magazynu.pdf');
+    // },
+
+    generatePDF() {
+  const pdf = new jsPDF();
+  pdf.text('Dokument Zwrotu do Magazynu', 14, 15);
+
+  const tableColumnHeaders = ["ID Produktu", "Nazwa Produktu", "Ilosc", "Magazyn Tymczasowy"];
+  const tableRows = [];
+
+  this.dataDelete.data.forEach((item) => {
+    const rowData = [
+      item.id.toString(),
+      item.warehouse.name,
+      item.quantity.toString(),
+      item.temporaryWarehouse.temporaryWarehouseName,
+    ];
+    tableRows.push(rowData);
+  });
+
+  pdf.autoTable({
+    head: [tableColumnHeaders],
+    body: tableRows,
+    startY: 20,
+    theme: 'grid',
+    margin: { top: 20 },
+  });
+
+  pdf.save('Dokument_Zwrotu_do_Magazynu.pdf');
+},
     async deleteTemporaryWarehouse(id) {
-      return await this.temporaryWarehouseService.deleteTemporaryWarehouse(id);
+      this.dataDelete = await this.temporaryWarehouseService.deleteTemporaryWarehouse(id);
+      return this.dataDelete;
     },
     detailTemporaryWarehouse(id) {
       this.$router.push({ name: "TemporaryWarehouseDetail", params: { id } });
@@ -179,13 +217,12 @@ export default {
         constructionManagerLastName: this.$user.surname,
         temporaryWarehouseName: this.data[0].model,
       };
-      if(data.temporaryWarehouseName.length <= 3 ){
-        this.nameWarehouse = true
-      }
-      else{
+      if (data.temporaryWarehouseName.length <= 3) {
+        this.nameWarehouse = true;
+      } else {
         await this.temporaryWarehouseService.createTemporaryWarehouse(data);
-      this.popup = false;
-      this.downloadData();
+        this.popup = false;
+        this.downloadData();
       }
     },
 
@@ -206,11 +243,11 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; 
+  z-index: 999;
 }
 
 .popup {
