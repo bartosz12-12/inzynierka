@@ -161,34 +161,20 @@ export default {
           break;
       }
     },
-    // generatePDF() {
-    //   const pdf = new jsPDF();
-    //   pdf.text('Dokument Zwrotu do Magazynu', 20, 10);
-
-    //   this.dataDelete.data.forEach((item, index) => {
-    //     const yPos = 20 + index * 60;
-    //     pdf.text(`Produkt ID: ${item.id}`, 20, yPos);
-    //     pdf.text(`Nazwa produktu: ${item.warehouse.name}`, 20, yPos + 10);
-    //     pdf.text(`Ilosc: ${item.quantity}`, 20, yPos + 20);
-    //     pdf.text(`Magazyn tymczasowy: ${item.temporaryWarehouse.temporaryWarehouseName}`, 20, yPos + 30);
-    //     // Dodaj więcej informacji w zależności od potrzeb
-    //   });
-
-    //   pdf.save('Dokument_Zwrotu_do_Magazynu.pdf');
-    // },
-
     generatePDF() {
   const pdf = new jsPDF();
   pdf.text('Dokument Zwrotu do Magazynu', 14, 15);
 
-  const tableColumnHeaders = ["ID Produktu", "Nazwa Produktu", "Ilosc", "Magazyn Tymczasowy"];
+  const tableColumnHeaders = ["ID Produktu","NR katalogowy", "Nazwa Produktu", "Ilosc","Id magazynu tymczasowego", "Nazwa magazynu Tymczasowego"];
   const tableRows = [];
 
   this.dataDelete.data.forEach((item) => {
     const rowData = [
-      item.id.toString(),
+      item.warehouse.id.toString(),
+      item.warehouse.catalogNumber,
       item.warehouse.name,
       item.quantity.toString(),
+      item.temporaryWarehouse.id.toString(),
       item.temporaryWarehouse.temporaryWarehouseName,
     ];
     tableRows.push(rowData);

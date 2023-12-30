@@ -30,4 +30,10 @@ export class ReportService extends Service {
         return await this.axiosInstance.post(
           apiPathsEnum.API_CREATE_REPORT, IReport);     
       }
+
+      public async getAllReportsWarehouseByReportsId( ReportId:any) {
+        return await this.axiosInstance.get(
+          apiPathsEnum.API_GET_ALL_REPORTWAREHOUSE_BY_REPORTID + ReportId
+        );
+      }
 }

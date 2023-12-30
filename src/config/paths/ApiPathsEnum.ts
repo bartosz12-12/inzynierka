@@ -38,4 +38,8 @@ export enum apiPathsEnum{
     API_GET_REPORT_BY_ID = "/api/Report/Get/",
     API_CREATE_REPORT ="/api/Report/Create",
     API_DELETE_REPORT = "/api/Report/Delete/",
+
+    //ReportWarehouse
+    API_GET_ALL_REPORTSWAREHOUSE = "/api/ReportWarehouse/GetAll",
+    API_GET_ALL_REPORTWAREHOUSE_BY_REPORTID = "/api/ReportWarehouse/report/",
 }

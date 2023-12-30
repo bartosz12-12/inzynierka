@@ -224,7 +224,7 @@ export default {
       if (data.warehouseId === "") {
         this.redId =true
       }if(data.quantity > 0 && data.warehouseId !== "") {
-        console.log( "to jest edytowana data", data)
+        await this.WarehouseItemService.createWarehouseItem(data)
         this.popup = false;
         this.downloadData();
       }

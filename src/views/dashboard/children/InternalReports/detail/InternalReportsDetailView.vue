@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import { ReportService } from "@/services/InternalReports/ReportService.ts";
+
 import { AgGridVue } from "ag-grid-vue3";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
@@ -39,37 +41,90 @@ export default {
   },
   data() {
     return {
+      id: this.$route.params.id,
       rowData: [],
+      internalReportsService: new ReportService,
       columnDefs: [
+        // {
+        //   headerName: "🗑",
+        //   field: "delete",
+        //   sortable: false,
+        //   inputWidth: 50,
+        //   inputValue: "",
+        //   width: 55,
+        //   value: "XX",
+        //   required: true,
+        //   valueGetter: () => "🗑",
+        // },
+        // {
+        //   headerName: "✎",
+        //   field: "edit",
+        //   sortable: false,
+        //   inputWidth: 50,
+        //   inputValue: "",
+        //   width: 55,
+        //   value: "XX",
+        //   required: true,
+        //   valueGetter: () => "✎",
+        // },
         {
-          headerName: "🗑",
-          field: "delete",
-          sortable: false,
-          inputWidth: 50,
+          headerName: this.$t("Id"),
+          field: "warehouse.id",
+          sortable: true,
           inputValue: "",
           width: 55,
-          value: "XX",
           required: true,
-          valueGetter: () => "🗑",
+          toInput: true,
+          label: "warehouse",
+          cellDataType: "number",
         },
         {
-          headerName: "✎",
-          field: "edit",
-          sortable: false,
-          inputWidth: 50,
+          headerName: this.$t("Nazwa"),
+          field: "warehouse.name",
+          sortable: true,
+          flex: 1,
           inputValue: "",
-          width: 55,
-          value: "XX",
           required: true,
-          valueGetter: () => "✎",
+          toInput: true,
+          label: "notification",
+          cellDataType: "text",
+        },
+        {
+          headerName: this.$t("CatalogNumber"),
+          field: "warehouse.catalogNumber",
+          sortable: true,
+          flex: 1,
+          inputValue: "",
+          required: true,
+          toInput: true,
+          label: "notification",
+          cellDataType: "text",
+        },
+        {
+          headerName: this.$t("HowMuch"),
+          field: "howMuch",
+          sortable: true,
+          flex: 1,
+          inputValue: "",
+          required: true,
+          toInput: true,
+          label: "notification",
+          cellDataType: "text",
         },
       ],
     };
   },
   methods: {
+    async downloadData() {
+      const data = await this.internalReportsService.getAllReportsWarehouseByReportsId(this.id);
+      this.rowData = data.data;
+    },
     back() {
       this.$router.push({ name: "InternalReports" });
     },
+  },
+  mounted() {
+    this.downloadData();
   },
 };
 </script>
