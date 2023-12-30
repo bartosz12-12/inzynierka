@@ -79,6 +79,11 @@ export default {
           permission: ["1"],
         },
         {
+          name: "Zgłoszenia",
+          view: "InternalReportsForMenager",
+          permission: ["1"],
+        },
+        {
           name: this.$t("Notifications"),
           view: "Notification",
           permission: ["1"],

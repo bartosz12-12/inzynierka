@@ -165,7 +165,10 @@ export default {
     async downloadData() {
       const data = await this.internalReportsService.getAllReports();
       console.log("data", data);
-      this.rowData = data.data;
+      this.rowData = data.data.filter(report => 
+      report.constructionManagerFirstName === this.$user.name &&
+      report.constructionManagerLastName === this.$user.surname
+    );
     },
     async downloadDataTemporaryWarehouses(){
         const data = await this.temporaryWarehouses.getAllTemporaryWarehouse();
