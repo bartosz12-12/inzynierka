@@ -15,8 +15,8 @@
         />
       </div>
   </div>
-  <button type="submit" class="add">Dodaj</button>
-  <button class="back" @click="back">Wstecz</button>
+  <button type="submit" class="add">{{ $t("add") }}</button>
+  <button class="back" @click="back">{{ $t("back") }}</button>
 </form>
 
 </template>

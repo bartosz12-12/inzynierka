@@ -37,8 +37,8 @@
           />
         </div>
       </div>
-      <button class="add" @click="create">Dodaj</button>
-      <button class="back" @click="back">Wstecz</button>
+      <button class="add" @click="create">{{ $t("add") }}</button>
+      <button class="back" @click="back">{{ $t("back") }}</button>
     </div>
   </div>
 </template>

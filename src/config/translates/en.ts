@@ -54,5 +54,8 @@ export default {
     TemporaryErrorWarehouse:"Select Product ID!",
     TemporaryErrorQuantity:"Quantity cannot be zero or minus!!",
     WarehouseNameError:"The name of the magazine is too short, at least 4 characters!",
-    Details:"Details"
+    Details:"Details",
+    ReportDetails:"Report details",
+    back:"BACK",
+    add :"ADD"
 }

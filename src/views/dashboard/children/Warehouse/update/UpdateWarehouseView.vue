@@ -13,8 +13,8 @@
       />
     </div>
   </div>
-  <button class="add" @click="update">Dodaj</button>
-  <button class="back" @click="back">Wstecz</button>
+  <button class="add" @click="update">{{ $t("add") }}</button>
+  <button class="back" @click="back">{{ $t("back") }}</button>
 </template>
 
 <script>

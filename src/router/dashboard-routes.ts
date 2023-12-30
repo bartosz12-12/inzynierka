@@ -18,6 +18,7 @@ import TemporaryWarehouseDetailView from "@/views/dashboard/children/TemporaryWa
 import TemporaryWarehouseAddView from "@/views/dashboard/children/TemporaryWarehouse/detail/add/TemporaryWarehouseAddView.vue"
 import InternalReports from "@/views/dashboard/children/InternalReports/InternalReports.vue"
 import WarehouseDetails from "@/views/dashboard/children/Warehouse/detail/WarehouseDetailsView.vue"
+import InternalReportsDetailView from "@/views/dashboard/children/InternalReports/detail/InternalReportsDetailView.vue"
 
 
 const DashboardRoutes: Array<RouteRecordRaw> = [
@@ -75,10 +76,18 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
                 name:'TemporaryWarehouseDetail',
                 component:TemporaryWarehouseDetailView,
             },
+            
+        
+            //InternalReports
             {
                 path:'internalReports',
                 name:'InternalReports',
                 component:InternalReports,
+            },
+            {
+                path:'internalReportsDetailView/:id',
+                name:'InternalReportsDetailView',
+                component:InternalReportsDetailView,
             },
         ]
     }

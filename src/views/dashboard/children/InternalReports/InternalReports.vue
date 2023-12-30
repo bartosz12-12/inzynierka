@@ -4,7 +4,7 @@
     <div class="functions">
       <img
         class="create"
-   
+        @click="popupActive"
         src="@\components\icons\square-plus.png"
         alt="Opis obrazu"
       />
@@ -26,19 +26,12 @@
   </ag-grid-vue>
   <div v-if="popup" class="overlay" @click="back">
     <div class="popup" @click.stop>
-      <div class="form_input">
-        <div v-for="report in data" :key="report.label">
-          <label :for="report.name">{{ report.label }}:</label>
-          <input
-            :class="{'form-input': true, 'red-border': nameWarehouse}"
-            :type="warehouse.type"
-            :name="warehouse.name"
-            v-model="warehouse.model"
-          />
-        </div>
-      </div>
-      <button class="add" @click="create">Dodaj</button>
-      <button class="back" @click="back">Wstecz</button>
+      <label for="temporaryWarehouseId">{{ $t("temporaryWarehouseId") }}</label>
+      <input :class="{'form-input': true, 'red-border': redQ}" type="number" v-model="temporaryWarehouseId" />
+      <label for="Description">{{ $t("Description") }}</label>
+      <input :class="{'form-input': true, 'red-border': redQ}" type="text" v-model="description" />
+      <button class="add" @click="create">{{ $t("add") }}</button>
+      <button class="back" @click="back">{{ $t("back") }}</button>
     </div>
   </div>
 </template>
@@ -63,14 +56,6 @@ export default {
       temporaryWarehouseId: 0,
       internalReportsService: new ReportService,
       temporaryWarehouses: new TemporaryWarehouseService,
-      data: [
-        {
-          label: this.$t("TemporaryWarehouseName"),
-          type: "text",
-          name: "temporaryWarehouseName",
-          model: "",
-        },
-      ],
       columnDefs: [
         {
           headerName: "🗑",
@@ -130,7 +115,7 @@ export default {
           cellDataType: "text",
         },
         {
-          headerName: "description",
+          headerName: this.$t("Description"),
           field: "description",
           sortable: true,
           inputWidth: 50,
@@ -198,16 +183,7 @@ export default {
             console.log("err", res);
           });
           break;
-        case "id":
-          this.detailTemporaryWarehouse(params.data.id);
-          break;
-        case "constructionManagerFirstName":
-          this.detailTemporaryWarehouse(params.data.id);
-          break;
-        case "constructionManagerLastName":
-          this.detailTemporaryWarehouse(params.data.id);
-          break;
-        case "temporaryWarehouseId":
+        default:
           this.detailTemporaryWarehouse(params.data.id);
           break;
       }
@@ -215,9 +191,9 @@ export default {
     async deleteReport(id) {
       return await this.internalReportsService.deleteReport(id);
     },
-    // detailTemporaryWarehouse(id) {
-    //   this.$router.push({ name: "TemporaryWarehouseDetail", params: { id } });
-    // },
+    detailTemporaryWarehouse(id) {
+      this.$router.push({ name: "InternalReportsDetailView", params: { id } });
+    },
     async create() {
       const data = {
         constructionManagerFirstName: this.$user.name,

@@ -23,4 +23,15 @@ export class WarehouseItemService extends Service {
         );     
       }
 
+      public async deleteItem(TemporaryWarehouseId:any) {
+        return await this.axiosInstance.delete(apiPathsEnum.API_DELETE_WAREHOUSEITEM + TemporaryWarehouseId)
+       }
+       
+       public async updateItem(warehouseId: number, product: object) {
+        return await this.axiosInstance.put(
+          apiPathsEnum.API_UPDATE_WAREHOUSEITEM + warehouseId,
+          product
+        ); 
+       } 
+
 }

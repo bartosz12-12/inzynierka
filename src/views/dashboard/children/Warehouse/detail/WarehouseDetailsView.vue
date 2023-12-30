@@ -2,7 +2,7 @@
   <div class="menubar">
     <h1 class="title">{{ $t("Details") }}</h1>
     <div class="functions">
-      <button id="back" @click="back">Wstecz</button>
+      <button id="back" @click="back">{{ $t("back") }}</button>
     </div>
   </div>
   <div class="kafelkek-container">

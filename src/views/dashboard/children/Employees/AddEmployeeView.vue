@@ -62,7 +62,7 @@
         </option>
       </select>
     </div>
-    <button type="submit" class="add">Dodaj</button>
+    <button type="submit" class="add">{{ $t("add") }}</button>
   </form>
 </template>
 

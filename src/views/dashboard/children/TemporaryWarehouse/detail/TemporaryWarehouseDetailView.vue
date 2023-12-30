@@ -4,7 +4,7 @@
       {{ $t("TemporaryWarehouse_id") }} (ID:{{ this.$route.params.id }})
     </h1>
     <div class="functions">
-      <button id="back" @click="back">Wstecz</button>
+      <button id="back" @click="back">{{ $t("back") }}</button>
       <img
         class="create"
         @click="popupActive"
@@ -45,8 +45,18 @@
       </select>
       <label for="quantity">{{ $t("quantity") }}</label>
       <input :class="{'form-input': true, 'red-border': redQ}" type="number" v-model="quantity" />
-      <button class="add" @click="create">Dodaj</button>
-      <button class="back" @click="backMT">Wstecz</button>
+      <button class="add" @click="create">{{ $t("add") }}</button>
+      <button class="back" @click="backMT">{{ $t("back") }}</button>
+    </div>
+  </div>
+
+  <div v-if="editPopup" class="overlay" @click="backMT">
+    <div class="popup" @click.stop>
+      <h2>ID {{ editId }}</h2>
+      <label for="quantity">{{ $t("quantity") }}</label>
+      <input :class="{'form-input': true, 'red-border': redQ}" type="number" v-model="editQuantity" />
+      <button class="add" @click="editProduct">{{ $t("add") }}</button>
+      <button class="back" @click="backMT">{{ $t("back") }}</button>
     </div>
   </div>
 </template>
@@ -63,6 +73,10 @@ export default {
   },
   data() {
     return {
+      warehouseIdEdit: "",
+      editQuantity: null,
+      editPopup: false,
+      editId: "",
       redId: false,
       redQ: false,
       warehouseId: "",
@@ -150,9 +164,51 @@ export default {
     },
     backMT() {
       this.popup = false;
+      this.editPopup = false;
+      this.editId  = "";
     },
     popupActive() {
       this.popup = true;
+    },
+    async handleColumnClick(params) {
+      switch (params.colDef.field) {
+        case "delete":
+          this.deleteProdukt(params.data.id).then((res) => {
+            console.log(res);
+            if (res.status === 200) {
+              this.downloadData();
+              return;
+            }
+            console.log("err", res);
+          });
+          break;
+        case "edit":
+          this.editPopup = true
+          this.editId = params.data.id
+          this.warehouseIdEdit = params.data.warehouseId
+          break;
+      }
+    },
+    async deleteProdukt(id) {
+      return await this.WarehouseItemService.deleteItem(id);
+    },
+    async editProduct() {
+      const data = {
+        temporaryWarehouseId: this.id,
+        temporaryWarehouse: {},
+        warehouseId: this.warehouseIdEdit,
+        warehouse: {},
+        quantity: this.editQuantity,
+      }
+      if (data.quantity <= 0) {
+        this.redQ = true
+      }else{
+        await this.WarehouseItemService.updateItem(this.editId, data)
+      this.downloadData();
+      this.editPopup = false;
+      this.editId  = "";
+      }
+      
     },
     async create() {
       const data = {
@@ -168,7 +224,7 @@ export default {
       if (data.warehouseId === "") {
         this.redId =true
       }if(data.quantity > 0 && data.warehouseId !== "") {
-        await this.WarehouseItemService.createWarehouseItem(data);
+        console.log( "to jest edytowana data", data)
         this.popup = false;
         this.downloadData();
       }
@@ -201,5 +257,8 @@ export default {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+h2{
+  margin-top: 0;
 }
 </style>
