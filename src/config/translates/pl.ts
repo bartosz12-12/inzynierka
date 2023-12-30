@@ -58,5 +58,6 @@ export default {
     Details: "Szczegóły",
     ReportDetails:"Szczegóły zgłoszenia",
     back:"WSTECZ",
-    add:"DODAJ"
+    add:"DODAJ",
+    AddProduktToReport:"Dodaj Przedmiot",
 }

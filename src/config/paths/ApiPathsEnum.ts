@@ -42,4 +42,5 @@ export enum apiPathsEnum{
     //ReportWarehouse
     API_GET_ALL_REPORTSWAREHOUSE = "/api/ReportWarehouse/GetAll",
     API_GET_ALL_REPORTWAREHOUSE_BY_REPORTID = "/api/ReportWarehouse/report/",
+    API_CREATE_ITEM_TO_REPORT="/api/ReportWarehouse/add"
 }

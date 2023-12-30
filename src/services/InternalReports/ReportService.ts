@@ -36,4 +36,9 @@ export class ReportService extends Service {
           apiPathsEnum.API_GET_ALL_REPORTWAREHOUSE_BY_REPORTID + ReportId
         );
       }
+
+      public async createReportItem(Item: any) {
+        return await this.axiosInstance.post(
+          apiPathsEnum.API_CREATE_ITEM_TO_REPORT, Item);     
+      }
 }

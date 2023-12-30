@@ -57,5 +57,7 @@ export default {
     Details:"Details",
     ReportDetails:"Report details",
     back:"BACK",
-    add :"ADD"
+    add :"ADD",
+    AddProduktToReport:"Add item",
+
 }
