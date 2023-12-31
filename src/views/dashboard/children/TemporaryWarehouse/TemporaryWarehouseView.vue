@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable'
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 import { TemporaryWarehouseService } from "@/services/TemporaryWarehouseService/TemporaryWarehouseService";
 import { AgGridVue } from "ag-grid-vue3";
 import "ag-grid-community/styles/ag-grid.css";
@@ -147,10 +147,13 @@ export default {
         case "delete":
           this.deleteTemporaryWarehouse(params.data.id).then((res) => {
             console.log(res);
-            if (res.status === 200) {
-              console.log("to jest data Delete: ", this.dataDelete);
+            this.downloadData();
+            if (
+              res.status === 200 &&
+              this.dataDelete !== null &&
+              this.dataDelete.data.length > 0
+            ) {
               this.generatePDF();
-              this.downloadData();
               return;
             }
             console.log("err", res);
@@ -162,36 +165,62 @@ export default {
       }
     },
     generatePDF() {
-  const pdf = new jsPDF();
-  pdf.text('Dokument Zwrotu do Magazynu', 14, 15);
+      
+      const pdf = new jsPDF({
+        unit: "mm",
+        format: "a4",
+      });
 
-  const tableColumnHeaders = ["ID Produktu","NR katalogowy", "Nazwa Produktu", "Ilosc","Id magazynu tymczasowego", "Nazwa magazynu Tymczasowego"];
-  const tableRows = [];
+      pdf.text("Dokument Zwrotu do Magazynu", 14, 15);
 
-  this.dataDelete.data.forEach((item) => {
-    const rowData = [
-      item.warehouse.id.toString(),
-      item.warehouse.catalogNumber,
-      item.warehouse.name,
-      item.quantity.toString(),
-      item.temporaryWarehouse.id.toString(),
-      item.temporaryWarehouse.temporaryWarehouseName,
-    ];
-    tableRows.push(rowData);
-  });
+      const tableColumnHeaders = [
+        "ID Produktu",
+        "NR katalogowy",
+        "Nazwa Produktu",
+        "Ilosc",
+        "Id magazynu tymczasowego",
+        "Nazwa magazynu Tymczasowego",
+      ];
+      const tableRows = [];
 
-  pdf.autoTable({
-    head: [tableColumnHeaders],
-    body: tableRows,
-    startY: 20,
-    theme: 'grid',
-    margin: { top: 20 },
-  });
+      this.dataDelete.data.forEach((item) => {
+        const rowData = [
+          item.warehouse.id.toString(),
+          item.warehouse.catalogNumber,
+          item.warehouse.name,
+          item.quantity.toString(),
+          item.temporaryWarehouse.id.toString(),
+          item.temporaryWarehouse.temporaryWarehouseName,
+        ];
+        tableRows.push(rowData);
+      });
 
-  pdf.save('Dokument_Zwrotu_do_Magazynu.pdf');
-},
+      pdf.autoTable({
+        head: [tableColumnHeaders],
+        body: tableRows,
+        startY: 20,
+        theme: "grid",
+        margin: { top: 20 },
+      });
+      const userInfoTable = [
+        ["Zwracajacy", "Data"],
+        [
+          `${this.dataDelete.data[0].temporaryWarehouse.constructionManagerFirstName} ${this.dataDelete.data[0].temporaryWarehouse.constructionManagerLastName}`,
+          new Date().toLocaleDateString(),
+        ],
+      ];
+
+      pdf.autoTable({
+        body: userInfoTable,
+        startY: pdf.autoTable.previous.finalY + 10,
+        theme: "grid",
+        margin: { top: 20 },
+      });
+      pdf.save("Dokument_Zwrotu_do_Magazynu.pdf");
+    },
     async deleteTemporaryWarehouse(id) {
-      this.dataDelete = await this.temporaryWarehouseService.deleteTemporaryWarehouse(id);
+      this.dataDelete =
+        await this.temporaryWarehouseService.deleteTemporaryWarehouse(id);
       return this.dataDelete;
     },
     detailTemporaryWarehouse(id) {
