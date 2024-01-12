@@ -60,4 +60,8 @@ export default {
     back:"WSTECZ",
     add:"DODAJ",
     AddProduktToReport:"Dodaj Przedmiot",
+    InternalReports:"Zgłoszenia wewnętrzne",
+    EndMaterial:"Kończące się materiały",
+    LogOut: "Wyloguj"
+
 }

@@ -5,8 +5,8 @@ import router from './router';
 import { createI18n } from "vue-i18n";
 import pl from "@/config/translates/pl";
 import en from "@/config/translates/en";
-import ua from "@/config/translates/ua";
-import by from "@/config/translates/by";
+import uk from './config/translates/uk';
+
 
 const userService = new UserService();
 const user = await userService.getUserData();
@@ -18,8 +18,8 @@ const i18n = createI18n({
     messages: { 
         pl: pl,
         en: en,
-        ua: ua, 
-        by: by },
+        uk: uk
+       },
 });
 
 const app = createApp(App);

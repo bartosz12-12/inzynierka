@@ -7,7 +7,7 @@
         class="end-material"
         :class="{ 'grey-button': !end_material, 'green-button': end_material }"
       >
-        kończące sie materiały
+      {{ $t("EndMaterial") }}
       </button>
       <img
         class="create"

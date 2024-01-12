@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@font-face {
+    font-family: 'TmpFont'; /* This is the name you'll use in the font-family property */
+    src: url('@/assets/OpenSans_Condensed-Regular.ttf') format('truetype');
+    /* Replace 'path/to/your/custom-font.ttf' with the actual path to your TTF font file */
+  }
+  @font-face{
+    font-family: 'Mulish';
+    src: url('@/assets/Mulish-VariableFont_wght.ttf')
+  }

@@ -184,6 +184,7 @@ export default {
           break;
         case "edit":
           this.editPopup = true
+          this.editQuantity = params.data.quantity
           this.editId = params.data.id
           this.warehouseIdEdit = params.data.warehouseId
           break;

@@ -1,6 +1,6 @@
 <template>
     <div class="menubar">
-      <h1 class="title">Zgłoszenia wewnętrzne</h1>
+      <h1 class="title">{{ $t("InternalReports") }}</h1>
       <div class="functions">
         
       </div>

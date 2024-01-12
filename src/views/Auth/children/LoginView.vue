@@ -53,7 +53,8 @@ export default {
         if(loginResult && loginResult.message){
             console.log("potwierdzam")
         }
-        this.$router.push({ name: 'Dashboard' });
+        await this.$router.push({ name: 'Dashboard' });
+        this.$router.go()
       },
 
       toForgotPassword(){

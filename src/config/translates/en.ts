@@ -59,5 +59,7 @@ export default {
     back:"BACK",
     add :"ADD",
     AddProduktToReport:"Add item",
-
+    InternalReports:"Internal reports",
+    EndMaterial:"Running out of materials",
+    LogOut: "Log out"
 }

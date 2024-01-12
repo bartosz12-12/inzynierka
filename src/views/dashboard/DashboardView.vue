@@ -20,7 +20,7 @@
       </h1>
       <div class="settings" v-if="setings">
         <p>{{ user.name }} {{ user.surname }}</p>
-        <button class="sign_out" @click="wyloguj">Wyloguj</button>
+        <button class="sign_out" @click="wyloguj">{{ $t("LogOut") }}</button>
       </div>
       <img
         @click="settings_on"
@@ -74,15 +74,15 @@ export default {
           permission: ["1"],
         },
         {
-          name: "Zgłoszenia wewnętrzne",
+          name:  this.$t("InternalReports") ,
           view: "InternalReports",
           permission: ["1"],
         },
-        {
-          name: "Zgłoszenia",
-          view: "InternalReportsForMenager",
-          permission: ["1"],
-        },
+        // {
+        //   name: this.$t("InternalReports"),
+        //   view: "InternalReportsForMenager",
+        //   permission: ["1"],
+        // },
         {
           name: this.$t("Notifications"),
           view: "Notification",
@@ -197,9 +197,9 @@ export default {
   cursor: pointer;
   padding: 8px;
   margin-bottom: 5px;
-  border-radius: 4px;
   background-color: #fff;
   transition: background-color 0.3s;
+  border-radius: 4%;
 }
 
 .panel:hover {

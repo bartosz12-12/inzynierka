@@ -165,12 +165,18 @@ export default {
       }
     },
     generatePDF() {
-      
       const pdf = new jsPDF({
         unit: "mm",
         format: "a4",
       });
+      pdf.addFont(
+        "Mulish",
+        "normal",
+        "../../../../assets/Mulish-VariableFont_wght.ttf"
+      );
 
+      // Ustaw niestandardowy font
+      pdf.setFont("Mulish", "normal");
       pdf.text("Dokument Zwrotu do Magazynu", 14, 15);
 
       const tableColumnHeaders = [
@@ -182,7 +188,6 @@ export default {
         "Nazwa magazynu Tymczasowego",
       ];
       const tableRows = [];
-
       this.dataDelete.data.forEach((item) => {
         const rowData = [
           item.warehouse.id.toString(),
@@ -194,7 +199,7 @@ export default {
         ];
         tableRows.push(rowData);
       });
-
+      console.log(tableRows.length);
       pdf.autoTable({
         head: [tableColumnHeaders],
         body: tableRows,
@@ -203,18 +208,21 @@ export default {
         margin: { top: 20 },
       });
       const userInfoTable = [
-        ["Zwracajacy", "Data"],
+        ["Zwracajacy", "Data", "Podpis"],
         [
           `${this.dataDelete.data[0].temporaryWarehouse.constructionManagerFirstName} ${this.dataDelete.data[0].temporaryWarehouse.constructionManagerLastName}`,
           new Date().toLocaleDateString(),
+          " ",
         ],
       ];
 
       pdf.autoTable({
         body: userInfoTable,
+
         startY: pdf.autoTable.previous.finalY + 10,
         theme: "grid",
         margin: { top: 20 },
+        htmlParseOptions: { useCss: true, useHtmlEntities: true },
       });
       pdf.save("Dokument_Zwrotu_do_Magazynu.pdf");
     },
@@ -277,5 +285,11 @@ export default {
 }
 .red-border {
   border: 2px solid red;
+}
+@font-face {
+  font-family: "Mulish";
+  src: url("../../../../assets/Mulish-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 </style>
