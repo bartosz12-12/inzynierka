@@ -1,14 +1,12 @@
 import {RouteRecordRaw} from "vue-router";
 import tokenVerificationMiddleware from "@/core/guards/tokenVerificationMiddleware";
-import permissionsVerification from "@/core/guards/permissionsVerification";
-import constructorManagerPermission from "@/core/guards/constructorManagerPermission";
-import secretariatPermission from "@/core/guards/secretariatPermission";
-import warehouseConstructorPermission from "@/core/guards/warehouseConstructorPermission";
-import warehouseManagerPermission from "@/core/guards/warehouseManagerPermission";
-import warehouseSecretariatPermission from "@/core/guards/warehouseSecretariatPermission";
+import addEmpoyeePermission from "@/core/guards/addEmpoyeePermission";
+import magazynPermission from "@/core/guards/magazynPermission";
+import temporaryWarehousePermission from "@/core/guards/temporaryWarehousePermission";
+import zgloszeniaWewPermission from "@/core/guards/zgloszeniaWewPermission";
+import zgloszeniaWewBudPermission from "@/core/guards/zgloszeniaWewBudPermission";
 import WarehouseView from "@/views/dashboard/children/Warehouse/WarehouseView.vue"
 import DashboardView from "@/views/dashboard/DashboardView.vue"
-import LinkView from "@/views/dashboard/children/LinkView.vue"
 import NotificationView from "@/views/dashboard/children/Notification/NotificationView.vue"
 import AddEmployeeViewView from "@/views/dashboard/children/Employees/AddEmployeeView.vue"
 import WarehouseAddWiev from "@/views/dashboard/children/Warehouse/add/WarehouseAddView.vue"
@@ -32,21 +30,25 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
         children: [
             //Warehouse
             {
+                beforeEnter: magazynPermission,
                 path:'warehouse',
                 name:'Warehouse',
                 component:WarehouseView
             },
             {
+                beforeEnter: magazynPermission,
                 path:'warehouse/add',
                 name:'WarehouseAdd',
                 component:WarehouseAddWiev
             },
             {
+                beforeEnter: magazynPermission,
                 path:'warehouse/update/:id',
                 name:'ProductUpdate',
                 component:UpdateWarehouseView
             },
             {
+                beforeEnter: magazynPermission,
                 path:'warehouse/details/:id',
                 name:'WarehouseDetail',
                 component:WarehouseDetails,
@@ -54,6 +56,7 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
 
             //Notification
             {
+                beforeEnter: magazynPermission,
                 path:'notification',
                 name:'Notification',
                 component:NotificationView
@@ -61,6 +64,7 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
 
             //Employee
             {
+                beforeEnter: addEmpoyeePermission,
                 path:'addEmployee',
                 name:'AddEmployee',
                 component:AddEmployeeViewView
@@ -68,11 +72,13 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
 
             //TemporaryWarehouse
             {
+                beforeEnter: temporaryWarehousePermission,
                 path:'temporaryWarehouse',
                 name:'TemporaryWarehouse',
                 component:TemporaryWarehouse,
             },
             {
+                beforeEnter: temporaryWarehousePermission,
                 path:'temporaryWarehouseDetail/:id',
                 name:'TemporaryWarehouseDetail',
                 component:TemporaryWarehouseDetailView,
@@ -81,24 +87,27 @@ const DashboardRoutes: Array<RouteRecordRaw> = [
         
             //InternalReports
             {
+                beforeEnter: zgloszeniaWewBudPermission,
                 path:'internalReports',
                 name:'InternalReports',
                 component:InternalReports,
             },
             {
+                beforeEnter: zgloszeniaWewBudPermission,
                 path:'internalReports/Detail/:id',
                 name:'InternalReportsDetailView',
                 component:InternalReportsDetailView,
             },
 
             //InternalReportsForMenager
-
             {
+                beforeEnter: zgloszeniaWewPermission,
                 path:'internalReportsForMenager',
                 name:'InternalReportsForMenager',
                 component:InternalReportsForMenager,
             },
             {
+                beforeEnter: zgloszeniaWewPermission,
                 path:'internalReportsForMenager/Detail/:id',
                 name:'internalReportsForMenagerDetailView',
                 component:InternalReportsForMenagerDetailView,

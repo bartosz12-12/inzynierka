@@ -11,7 +11,7 @@ import uk from './config/translates/uk';
 const userService = new UserService();
 const user = await userService.getUserData();
 const sysLang = user?.language ?? navigator.language.substring(0, 2) ?? 'en';
-console.log("TEST", user?.language, user?.email);
+console.log("TEST", user?.language, user?.email,);
 const i18n = createI18n({
     legacy: false, 
     locale: sysLang, 

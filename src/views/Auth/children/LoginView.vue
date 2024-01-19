@@ -54,7 +54,6 @@ export default {
             console.log("potwierdzam")
         }
         await this.$router.push({ name: 'Dashboard' });
-        this.$router.go()
       },
 
       toForgotPassword(){

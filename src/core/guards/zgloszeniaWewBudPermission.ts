@@ -1,12 +1,12 @@
 import {NavigationGuardNext} from "vue-router";
 import {apiPathsEnum} from "@/config/paths/ApiPathsEnum";
-const secretariatPermission = (to: any, from: any, next: NavigationGuardNext) => {
+const zgloszeniaWewBudPermission = (to: any, from: any, next: NavigationGuardNext) => {
     const typeUser = localStorage.getItem('typeUser');
     console.log(typeUser)
-    if (typeUser === "4") {
+    if (typeUser === "1" || typeUser === "3" || typeUser ==="5"||typeUser==="6") {
         next();
     } else {
         next({ name: 'Warehouse' });
     }
 };
-export default secretariatPermission;
+export default zgloszeniaWewBudPermission;

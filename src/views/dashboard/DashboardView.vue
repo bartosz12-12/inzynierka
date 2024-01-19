@@ -66,32 +66,32 @@ export default {
         {
           name: this.$t("Warehouse"),
           view: "Warehouse",
-          permission: ["1"],
+          permission: ["1","2","3","4","5","6"],
         },
         {
           name: this.$t("TemporaryWarehouse"),
           view: "TemporaryWarehouse",
-          permission: ["1"],
+          permission: ["1","2","3","5","6"],
         },
         {
           name:  this.$t("InternalReports") ,
           view: "InternalReports",
-          permission: ["1"],
+          permission: ["1","3","5","6"],
         },
-        // {
-        //   name: this.$t("InternalReports"),
-        //   view: "InternalReportsForMenager",
-        //   permission: ["1"],
-        // },
+        {
+          name: this.$t("InternalReports"),
+          view: "InternalReportsForMenager",
+          permission: ["1","2","5"],
+        },
         {
           name: this.$t("Notifications"),
           view: "Notification",
-          permission: ["1"],
+          permission: ["1","2","4","5","6"],
         },
         {
           name: this.$t("CreateAccountForEmployee"),
           view: "AddEmployee",
-          permission: ["1"],
+          permission: ["1","4","6"],
         },
       ],
     };
