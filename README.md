@@ -1,4 +1,5 @@
-# Aplikacja wspomagająca procesy magazynowe przedsiębiorstwa budowlanego napisana w vue.js 
+# Skończona aplikacja znajduje się na branchu dev
+# Aplikacja wspomagająca procesy magazynowe przedsiębiorstwa budowlanego napisana w vue.js
 ![widokStart](https://github.com/bartosz12-12/inzynierka/assets/73654110/8d9fc281-5840-4a79-b013-ab15bef51b93)
 
 # Aplikacja obejmuje dwa jezyki polski i angielski
