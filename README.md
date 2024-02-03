@@ -18,7 +18,7 @@ Ze wzgędu na słownikową budowę dodawanie kolejnych jezyków jest bardzo pros
 # Aplikacja posiada system uprawnień 
 ![userForm](https://github.com/bartosz12-12/inzynierka/assets/73654110/c947d371-6af5-4713-93d1-23ec396d4290)
 
-# Do pełnego dziłania potrzebny jest backend z https://github.com/Maciej0410/warehouseManagmentAPI
+# Do pełnego działania potrzebny jest backend z https://github.com/Maciej0410/warehouseManagmentAPI
 
 # inzynier
 
