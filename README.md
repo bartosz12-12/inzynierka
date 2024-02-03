@@ -11,6 +11,12 @@
 # Aplikacja informuje użytkownika o wystąpionych błędach podczas dodawania, modyfikowania, usuwania oraz autoryzacji
 ![blad2](https://github.com/bartosz12-12/inzynierka/assets/73654110/6094a27e-9038-4be8-a4b6-a754005c0203)
 
+# Większość formularzy jest zrobiona w postaci pop-up
+![dodawaniedoZgłoszenia](https://github.com/bartosz12-12/inzynierka/assets/73654110/a5db15e9-c9d7-4229-8e1b-bae30298c0e9)
+
+# Aplikacja posiada system uprawnień 
+![userForm](https://github.com/bartosz12-12/inzynierka/assets/73654110/c947d371-6af5-4713-93d1-23ec396d4290)
+
 # Do pełnego dziłania potrzebny jest backend z https://github.com/Maciej0410/warehouseManagmentAPI
 
 # inzynier
