@@ -4,7 +4,7 @@
 
 # Aplikacja obejmuje dwa jezyki polski i angielski
 ![image](https://github.com/bartosz12-12/inzynierka/assets/73654110/d0f05fc0-400b-479f-96ce-bb67d12a42c6)
-Ze wzgędu na słownikową budowę dodawanie kolejnych jezyków jest bardzo prosta i szybka
+Ze wzgędu na słownikową budowę dodawanie kolejnych jezyków jest bardzo proste i szybkie
 
 # Jedną z ważniejszych funkcji są magazyny tymczasowe
 ![TemporaryWarehouse](https://github.com/bartosz12-12/inzynierka/assets/73654110/be239543-bad8-4c6f-add0-4a2fd8ecf97c)
